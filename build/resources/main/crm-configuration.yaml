@@ -1,6 +1,0 @@
-user:
-  login: "admmin"
-  password: "nimda2012"
-crm:
-  host: "https://es-bravo.moneyman.ru"
-  endpoint: "/secure/new-admin/index.html#/login"
