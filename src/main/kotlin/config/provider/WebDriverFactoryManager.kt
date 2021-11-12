@@ -10,8 +10,7 @@ object WebDriverFactoryManager {
   fun getWebDriverConfiguration(browserType: BrowserType) {
     YamlReader().readConfiguration(Context.webDriverConfigurationPath)
 
-    var browser: String? = null
-    browser = when (browserType) {
+    val browser = when (browserType) {
       BrowserType.CHROME -> "chrome"
       BrowserType.FIREFOX -> "firefox"
     }

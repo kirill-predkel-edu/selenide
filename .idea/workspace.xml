@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc9967c6-cbb3-401c-8762-97c32c5da66c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Test.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/provider/WebDriverFactoryManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/config/provider/WebDriverFactoryManager.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
