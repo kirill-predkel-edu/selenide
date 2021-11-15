@@ -4,7 +4,7 @@ import config.holders.CrmConfigurationHolder
 import config.holders.WebDriverConfigurationHolder
 
 object Context {
-  const val crmConfigurationPath: String = "crm-configuration.yaml"
+  const val crmConfigurationPath: String = "application-configuration.yaml"
   const val webDriverConfigurationPath: String = "webdriver-configuration.yaml"
 
   val login = CrmConfigurationHolder.getCrmConfiguration().user.login
@@ -15,7 +15,6 @@ object Context {
   const val captcha = "11111"
 
   val timeoutAmount = WebDriverConfigurationHolder.getWebDriverConfiguration().timeout
-  val browserWidth = WebDriverConfigurationHolder.getWebDriverConfiguration().browserWidth
-  val browserHeight = WebDriverConfigurationHolder.getWebDriverConfiguration().browserHeight
+  val browserScreenSize = WebDriverConfigurationHolder.getWebDriverConfiguration().browserScreenSize
 
 }

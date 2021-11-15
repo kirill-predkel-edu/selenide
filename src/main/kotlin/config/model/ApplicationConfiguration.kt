@@ -1,6 +1,6 @@
 package config.model
 
-data class CrmConfiguration(
+data class ApplicationConfiguration(
   val user: UserConfiguration,
   val crm: CrmUrlConfiguration
 )

@@ -1,17 +1,17 @@
 package config.holders
 
-import config.model.CrmConfiguration
+import config.model.ApplicationConfiguration
 
 object CrmConfigurationHolder {
-  private lateinit var crmConfigurationInstance: CrmConfiguration
+  private lateinit var applicationConfigurationInstance: ApplicationConfiguration
 
-  fun setCrmConfiguration(crmConfiguration: CrmConfiguration) {
-    if (!this::crmConfigurationInstance.isInitialized) {
-      crmConfigurationInstance = crmConfiguration
+  fun setCrmConfiguration(applicationConfiguration: ApplicationConfiguration) {
+    if (!this::applicationConfigurationInstance.isInitialized) {
+      applicationConfigurationInstance = applicationConfiguration
     }
   }
 
-  fun getCrmConfiguration(): CrmConfiguration {
-    return crmConfigurationInstance
+  fun getCrmConfiguration(): ApplicationConfiguration {
+    return applicationConfigurationInstance
   }
 }

@@ -5,7 +5,7 @@ import config.holders.WebDriverConfigurationHolder
 import context.Context.crmConfigurationPath
 
 class YamlReader {
-  private val CONFIG_RESOURCES_PATH: String = "src/main/resources/"
+  private val CONFIG_RESOURCES_PATH: String = "src/test/resources/"
 
   fun readConfiguration(configurationPath: String) {
     if (configurationPath == crmConfigurationPath) CrmConfigurationHolder.setCrmConfiguration(

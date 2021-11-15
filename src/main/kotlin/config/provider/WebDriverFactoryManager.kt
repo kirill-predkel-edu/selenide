@@ -1,20 +1,17 @@
 package config.provider
 
 import config.BrowserType
+import config.holders.WebDriverConfigurationHolder
+import config.model.WebDriverConfiguration
 import context.Context
-import context.Context.timeoutAmount
-import io.github.bonigarcia.wdm.WebDriverManager
 
-object WebDriverFactoryManager {
+open class WebDriverFactoryManager {
 
-  fun getWebDriverConfiguration(browserType: BrowserType) {
-    YamlReader().readConfiguration(Context.webDriverConfigurationPath)
+  open fun setWebDriverFactory(browserType: BrowserType): WebDriverDefaultFactory {
 
-    val browser = when (browserType) {
-      BrowserType.CHROME -> "chrome"
-      BrowserType.FIREFOX -> "firefox"
+    return when (browserType) {
+      BrowserType.CHROME -> ChromeWebDriverFactory()
+      BrowserType.FIREFOX -> FirefoxWebDriverFactory()
     }
-    val wdm: WebDriverManager = WebDriverManager.getInstance(browser)
-    timeoutAmount?.let { wdm.timeout(it) }
   }
 }
