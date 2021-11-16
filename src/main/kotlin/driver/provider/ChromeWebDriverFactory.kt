@@ -1,4 +1,4 @@
-package config.provider
+package driver.provider
 
 import com.codeborne.selenide.Configuration
 import config.BrowserType

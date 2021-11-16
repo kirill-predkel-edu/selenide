@@ -1,20 +1,19 @@
 import config.BrowserType.CHROME
-import config.provider.WebDriverFactoryManager
-import config.provider.YamlReader
-import context.Context
+import config.holders.ApplicationConfigurationHolder
+import config.model.ApplicationConfiguration
+import driver.provider.WebDriverFactoryManager
 import io.github.bonigarcia.wdm.WebDriverManager
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal abstract class BaseTest {
+  lateinit var config: ApplicationConfiguration
 
   @BeforeAll
   fun setup() {
-    val wvm: WebDriverManager = WebDriverManager.getInstance()
-    YamlReader().readConfiguration(Context.webDriverConfigurationPath)
-    YamlReader().readConfiguration(Context.crmConfigurationPath)
+    config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
     WebDriverFactoryManager().setWebDriverFactory(CHROME).configDriver()
-    wvm.setup()
+    WebDriverManager.getInstance().setup()
   }
 }
