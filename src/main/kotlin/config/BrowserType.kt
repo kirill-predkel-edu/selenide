@@ -1,5 +1,6 @@
 package config
 
-enum class BrowserType {
-  CHROME, FIREFOX
+enum class BrowserType(val browserName: String) {
+  CHROME("chrome"),
+  FIREFOX("firefox")
 }

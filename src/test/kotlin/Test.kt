@@ -1,29 +1,17 @@
 import com.codeborne.selenide.Selenide.open
-import config.provider.YamlReader
-import context.Context.captcha
-import context.Context.crmConfigurationPath
-import context.Context.crmLoginPageUrl
-import context.Context.login
-import context.Context.password
-import org.junit.jupiter.api.BeforeEach
-import ui.crm.CrmLoginPage
 import org.junit.jupiter.api.Test
+import ui.crm.CrmLoginPage
 
 internal class Test : BaseTest() {
-
-  @BeforeEach
-  fun readYamlConfiguration() {
-    YamlReader().readConfiguration(crmConfigurationPath)
-  }
 
   @Test
   fun crmLogin() {
     val crmLoginPage = CrmLoginPage()
-    open(crmLoginPageUrl)
+    open(config.crm.host + config.crm.endpoint)
     crmLoginPage.apply {
-      inputEmail(login)
-      inputPassword(password)
-      inputCaptcha(captcha)
+      inputEmail(config.user.login)
+      inputPassword(config.user.password)
+      inputCaptcha(config.user.captcha)
     }
     crmLoginPage.clickSubmitButton()
   }

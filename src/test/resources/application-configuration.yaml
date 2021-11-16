@@ -1,6 +1,7 @@
 user:
   login: "admmin"
   password: "nimda2012"
+  captcha: "11111"
 crm:
   host: "https://es-bravo.moneyman.ru"
   endpoint: "/secure/new-admin/index.html#/login"
