@@ -1,11 +1,15 @@
 package driver.provider
 
 import com.codeborne.selenide.Configuration
-import config.BrowserType
+import driver.model.BrowserType
+import driver.model.WebDriverConfiguration
+import io.github.bonigarcia.wdm.WebDriverManager
 
-class FirefoxWebDriverFactory: WebDriverDefaultFactory {
+internal class FirefoxWebDriverFactory(private var webDriverConfiguration: WebDriverConfiguration):
+WebDriverDefaultFactory {
   override fun configDriver() {
-    Configuration.browser = BrowserType.FIREFOX.browserName
-    setSelenideDefaultDriverConfig()
+    Configuration.browser = webDriverConfiguration.browserType.browserName
+    setSelenideDefaultDriverConfig(webDriverConfiguration)
+    WebDriverManager.getInstance().setup()
   }
 }

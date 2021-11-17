@@ -1,12 +1,17 @@
 package driver.provider
+import driver.model.BrowserType
+import driver.model.WebDriverConfiguration
+import driver.model.WebDriverType
 
-import config.BrowserType
-
-class WebDriverFactoryManager {
-  fun setWebDriverFactory(browserType: BrowserType): WebDriverDefaultFactory {
-    return when (browserType) {
-      BrowserType.CHROME -> ChromeWebDriverFactory()
-      BrowserType.FIREFOX -> FirefoxWebDriverFactory()
+internal class WebDriverFactoryManager{
+  fun setWebDriverFactory(webDriverConfiguration: WebDriverConfiguration): WebDriverDefaultFactory {
+    return when (webDriverConfiguration.webDriverType) {
+      WebDriverType.LOCAL ->
+        return when (webDriverConfiguration.browserType) {
+          BrowserType.FIREFOX -> FirefoxWebDriverFactory(webDriverConfiguration)
+          BrowserType.CHROME -> ChromeWebDriverFactory(webDriverConfiguration)
+        }
+      WebDriverType.REMOTE -> TODO()
     }
   }
 }

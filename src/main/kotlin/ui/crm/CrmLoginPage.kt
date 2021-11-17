@@ -4,7 +4,7 @@ import com.codeborne.selenide.Selenide.element
 import com.codeborne.selenide.SelenideElement
 import org.openqa.selenium.By
 
-class CrmLoginPage {
+internal class CrmLoginPage {
   private val emailField: SelenideElement = element(By.cssSelector("#username"))
   private val passwordField: SelenideElement = element(By.cssSelector("#password"))
   private val captchaField: SelenideElement = element(By.cssSelector("#captcha"))
