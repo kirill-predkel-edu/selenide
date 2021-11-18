@@ -1,9 +1,9 @@
-package config.holders
+package config.holder
 
 import config.model.ApplicationConfiguration
 import config.provider.ApplicationConfigProvider
 
-object ApplicationConfigurationHolder {
+internal object ApplicationConfigurationHolder {
   private var applicationConfiguration: ApplicationConfiguration? = null
 
   fun getApplicationConfiguration(): ApplicationConfiguration? {

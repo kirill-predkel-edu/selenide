@@ -1,8 +1,6 @@
-import config.BrowserType.CHROME
-import config.holders.ApplicationConfigurationHolder
+import config.holder.ApplicationConfigurationHolder
 import config.model.ApplicationConfiguration
 import driver.provider.WebDriverFactoryManager
-import io.github.bonigarcia.wdm.WebDriverManager
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
@@ -13,7 +11,6 @@ internal abstract class BaseTest {
   @BeforeAll
   fun setup() {
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
-    WebDriverFactoryManager().setWebDriverFactory(CHROME).configDriver()
-    WebDriverManager.getInstance().setup()
+    WebDriverFactoryManager().setWebDriverFactory()
   }
 }

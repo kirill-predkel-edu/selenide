@@ -1,16 +1,13 @@
 package driver.provider
 
 import com.codeborne.selenide.Configuration
-import config.holders.ApplicationConfigurationHolder
-import driver.configuration.WebDriverConfigurationHolder
+import driver.model.WebDriverConfiguration
 
-interface WebDriverDefaultFactory {
-  fun configDriver()
+internal interface WebDriverDefaultFactory {
+  fun configDriver(webDriverConfiguration: WebDriverConfiguration)
 
-  fun setSelenideDefaultDriverConfig() {
-    WebDriverConfigurationHolder.getWebDriverConfiguration()?.let {
-      Configuration.browserSize = it.browserScreenSize
-      Configuration.timeout = it.timeout
-    }
+  fun setSelenideDefaultDriverConfig(webDriverConfiguration: WebDriverConfiguration) {
+    Configuration.browserSize = webDriverConfiguration.browserScreenSize
+    Configuration.timeout = webDriverConfiguration.timeout
   }
 }

@@ -7,7 +7,7 @@ internal class Test : BaseTest() {
   @Test
   fun crmLogin() {
     val crmLoginPage = CrmLoginPage()
-    open(config.crm.host + config.crm.endpoint)
+    open("https://google.com")
     crmLoginPage.apply {
       inputEmail(config.user.login)
       inputPassword(config.user.password)
@@ -16,3 +16,12 @@ internal class Test : BaseTest() {
     crmLoginPage.clickSubmitButton()
   }
 }
+
+//config.crm.host + config.crm.endpoint)
+//    crmLoginPage.apply {
+//      inputEmail(config.user.login)
+//      inputPassword(config.user.password)
+//      inputCaptcha(config.user.captcha)
+//    }
+//    crmLoginPage.clickSubmitButton()
+//  }

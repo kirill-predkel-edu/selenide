@@ -1,9 +1,9 @@
-package driver.configuration
+package driver.holder
 
 import driver.model.WebDriverConfiguration
 import driver.provider.WebDriverConfigProvider
 
-object WebDriverConfigurationHolder {
+internal object WebDriverConfigurationHolder {
   private var webDriverConfiguration: WebDriverConfiguration? = null
 
   fun getWebDriverConfiguration(): WebDriverConfiguration? {

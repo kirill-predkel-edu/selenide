@@ -4,34 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc9967c6-cbb3-401c-8762-97c32c5da66c" name="Changes" comment="create factories">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/config/holders/ApplicationConfigurationHolder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/config/provider/ApplicationConfigProvider.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/driver/model/WebDriverConfiguration.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverConfigProvider.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverDefaultFactory.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/utils/YamlToObject.kt" afterDir="false" />
+    <list default="true" id="dc9967c6-cbb3-401c-8762-97c32c5da66c" name="Changes" comment="Update architecture">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/RemoteChromeWebDriverFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/holders/CrmConfigurationHolder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/holders/WebDriverConfigurationHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/configuration/WebDriverConfigurationHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/BrowserType.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/holders/ApplicationConfigurationHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/config/holder/ApplicationConfigurationHolder.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/model/ApplicationConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/config/model/ApplicationConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/model/WebDriverConfiguration.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/provider/ChromeWebDriverFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/ChromeWebDriverFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/provider/FirefoxWebDriverFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/FirefoxWebDriverFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/provider/WebDriverDefaultFactory.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/provider/WebDriverFactoryManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverFactoryManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/provider/YamlReader.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/provider/YamlToObject.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/context/Context.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/configuration/WebDriverConfigurationHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/holder/WebDriverConfigurationHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/model/WebDriverConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/model/WebDriverConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/ChromeWebDriverFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/ChromeWebDriverFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/FirefoxWebDriverFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/FirefoxWebDriverFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverDefaultFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverDefaultFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverFactoryManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverFactoryManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ui/crm/CrmLoginPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ui/crm/CrmLoginPage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/utils/YamlToObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/utils/YamlToObject.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/BaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/BaseTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Test.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application-configuration.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application-configuration.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/webdriver-configuration.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/webdriver-configuration.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +179,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/kotlin/factory" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -189,6 +188,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kirill.predkel\IdeaProjects\NewSelenideProject" />
       <recent name="C:\Users\kirill.predkel\IdeaProjects\untitled\src\main\kotlin\factory" />
       <recent name="C:\Users\kirill.predkel\IdeaProjects\untitled\src\main\resources" />
     </key>
@@ -324,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636977804371</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update architecture">
+      <created>1637154727188</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637154727188</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -343,6 +350,7 @@
     <MESSAGE value="Update webdriver manager" />
     <MESSAGE value="clean project" />
     <MESSAGE value="create factories" />
-    <option name="LAST_COMMIT_MESSAGE" value="create factories" />
+    <MESSAGE value="Update architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update architecture" />
   </component>
 </project>

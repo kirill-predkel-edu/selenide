@@ -6,7 +6,7 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import java.nio.file.FileSystems
 import java.nio.file.Files
 
-object YamlToObject {
+internal object YamlToObject {
 
   fun <T> readYaml(filePath: String, objectClass: Class<T>): T =
     Files.newBufferedReader(FileSystems.getDefault().getPath(filePath)).use {
