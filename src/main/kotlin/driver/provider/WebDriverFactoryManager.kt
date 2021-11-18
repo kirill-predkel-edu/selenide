@@ -1,17 +1,22 @@
 package driver.provider
+
+import driver.holder.WebDriverConfigurationHolder
 import driver.model.BrowserType
-import driver.model.WebDriverConfiguration
 import driver.model.WebDriverType
 
-internal class WebDriverFactoryManager{
-  fun setWebDriverFactory(webDriverConfiguration: WebDriverConfiguration): WebDriverDefaultFactory {
-    return when (webDriverConfiguration.webDriverType) {
-      WebDriverType.LOCAL ->
-        return when (webDriverConfiguration.browserType) {
-          BrowserType.FIREFOX -> FirefoxWebDriverFactory(webDriverConfiguration)
-          BrowserType.CHROME -> ChromeWebDriverFactory(webDriverConfiguration)
-        }
-      WebDriverType.REMOTE -> TODO()
-    }
+internal class WebDriverFactoryManager {
+  private val webDriverConfiguration = WebDriverConfigurationHolder.getWebDriverConfiguration()
+
+  fun setWebDriverFactory() {
+    webDriverConfiguration?.let { driverConfig ->
+      when (driverConfig.webDriverType) {
+        WebDriverType.LOCAL ->
+          when (driverConfig.browserType) {
+            BrowserType.FIREFOX -> FirefoxWebDriverFactory().configDriver(driverConfig)
+            BrowserType.CHROME -> ChromeWebDriverFactory().configDriver(driverConfig)
+          }
+        WebDriverType.REMOTE -> RemoteChromeWebDriverFactory().configDriver(driverConfig)
+      }
+    } ?: throw IllegalStateException("WebDriver config isn't initialized")
   }
 }

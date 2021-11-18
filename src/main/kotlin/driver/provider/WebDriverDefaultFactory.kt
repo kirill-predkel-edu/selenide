@@ -3,8 +3,8 @@ package driver.provider
 import com.codeborne.selenide.Configuration
 import driver.model.WebDriverConfiguration
 
-interface WebDriverDefaultFactory {
-  fun configDriver()
+internal interface WebDriverDefaultFactory {
+  fun configDriver(webDriverConfiguration: WebDriverConfiguration)
 
   fun setSelenideDefaultDriverConfig(webDriverConfiguration: WebDriverConfiguration) {
     Configuration.browserSize = webDriverConfiguration.browserScreenSize

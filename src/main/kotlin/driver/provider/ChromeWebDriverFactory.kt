@@ -4,9 +4,9 @@ import com.codeborne.selenide.Configuration
 import driver.model.WebDriverConfiguration
 import io.github.bonigarcia.wdm.WebDriverManager
 
-internal class ChromeWebDriverFactory(private var webDriverConfiguration: WebDriverConfiguration) :
+internal class ChromeWebDriverFactory() :
   WebDriverDefaultFactory {
-  override fun configDriver() {
+  override fun configDriver(webDriverConfiguration: WebDriverConfiguration) {
     Configuration.browser = webDriverConfiguration.browserType.browserName
     setSelenideDefaultDriverConfig(webDriverConfiguration)
     WebDriverManager.getInstance().setup()
