@@ -1,6 +1,7 @@
 package ui.crm
 
 import com.codeborne.selenide.Selenide.element
+import com.codeborne.selenide.Selenide.open
 import com.codeborne.selenide.SelenideElement
 import org.openqa.selenium.By
 
@@ -14,6 +15,10 @@ internal class CrmLoginPage {
           "div.login-submit-block > button"
     )
   )
+
+  fun openLoginPage(pageUrl: String) {
+    open(pageUrl)
+  }
 
   fun inputEmail(login: String?) {
     emailField.value = login
