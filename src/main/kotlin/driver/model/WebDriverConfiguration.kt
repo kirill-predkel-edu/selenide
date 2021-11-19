@@ -4,7 +4,9 @@ internal data class WebDriverConfiguration(
   val timeout: Long,
   val browserScreenSize: String,
   val webDriverType: WebDriverType,
-  val browserType: BrowserType
+  val browserType: BrowserType,
+  val remoteDriverHost: String,
+  val remoteDriverPort: Int
 )
 
 internal enum class BrowserType(val browserName: String) {

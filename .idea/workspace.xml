@@ -5,31 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc9967c6-cbb3-401c-8762-97c32c5da66c" name="Changes" comment="Update architecture">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/RemoteChromeWebDriverFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/BrowserType.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/holders/ApplicationConfigurationHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/config/holder/ApplicationConfigurationHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/config/model/ApplicationConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/config/model/ApplicationConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/configuration/WebDriverConfigurationHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/holder/WebDriverConfigurationHolder.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/model/WebDriverConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/model/WebDriverConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/ChromeWebDriverFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/ChromeWebDriverFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/FirefoxWebDriverFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/FirefoxWebDriverFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverDefaultFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverDefaultFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverFactoryManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/WebDriverFactoryManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ui/crm/CrmLoginPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ui/crm/CrmLoginPage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/utils/YamlToObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/utils/YamlToObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/BaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/BaseTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/driver/provider/RemoteChromeWebDriverFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/driver/provider/RemoteChromeWebDriverFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Test.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/webdriver-configuration.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/webdriver-configuration.yaml" afterDir="false" />
     </list>
@@ -155,6 +139,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -213,27 +198,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.Test.crmLogin">
-    <configuration name="untitled [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="untitled [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -274,6 +238,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test.crmLogins" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="untitled.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <option name="METHOD_NAME" value="crmLogins" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="untitled.test" />
       <option name="PACKAGE_NAME" value="" />
@@ -287,10 +261,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.Test.crmLogin" />
-        <item itemvalue="Gradle.untitled [clean]" />
         <item itemvalue="JUnit.Test" />
+        <item itemvalue="JUnit.Test.crmLogins" />
+        <item itemvalue="Gradle.untitled [clean]" />
         <item itemvalue="JUnit.Test.test" />
-        <item itemvalue="Gradle.untitled [build]" />
       </list>
     </recent_temporary>
   </component>

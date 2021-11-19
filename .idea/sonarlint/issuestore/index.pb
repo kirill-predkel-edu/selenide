@@ -9,3 +9,9 @@ A
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
 l
 <src/main/kotlin/config/provider/ApplicationConfigProvider.kt,7\5\75abd0b14a844999308efb8278e60c257ee05aca
+h
+8src/main/kotlin/config/model/ApplicationConfiguration.kt,6\5\65127302968ff58e361e5eb10a66134e9a6e2a7c
+V
+&src/main/kotlin/ui/crm/CrmLoginPage.kt,a\7\a7dc7083c347049ea2c33e3fdd4436dbfa24dc8d
+i
+9src/main/kotlin/driver/provider/ChromeWebDriverFactory.kt,2\0\20077733232d2a07f23af425f7cc6e1f0fe5f0d1
