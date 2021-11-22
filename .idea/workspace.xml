@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc9967c6-cbb3-401c-8762-97c32c5da66c" name="Changes" comment="Add grid support">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/services/CrmLoginPageOperations.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="dc9967c6-cbb3-401c-8762-97c32c5da66c" name="Changes" comment="Add Template pattern">
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -15,8 +13,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ui/crm/CrmLoginPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ui/crm/CrmLoginPage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Test.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/webdriver-configuration.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/webdriver-configuration.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ui/elements/button/SubmitButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ui/elements/button/Button.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ui/elements/input/InputCaptcha.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ui/elements/input/InputCaptcha.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ui/elements/input/InputEmail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ui/elements/input/InputEmail.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ui/elements/input/InputPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ui/elements/input/InputPassword.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +130,7 @@
         <option value="Kotlin Enum" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
@@ -193,6 +194,7 @@
       <recent name="config.provider" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="ui.elements.input" />
       <recent name="driver.provider" />
       <recent name="config.provider" />
       <recent name="config.holders" />
@@ -313,7 +315,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637313232210</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="reformat">
+      <created>1637324297955</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1637324297955</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add Template pattern">
+      <created>1637330909507</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1637330909507</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,6 +350,8 @@
     <MESSAGE value="create factories" />
     <MESSAGE value="Update architecture" />
     <MESSAGE value="Add grid support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add grid support" />
+    <MESSAGE value="reformat" />
+    <MESSAGE value="Add Template pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Template pattern" />
   </component>
 </project>
