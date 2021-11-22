@@ -4,6 +4,10 @@ import com.codeborne.selenide.Selenide.element
 import com.codeborne.selenide.Selenide.open
 import com.codeborne.selenide.SelenideElement
 import org.openqa.selenium.By
+import ui.elements.button.Button
+import ui.elements.input.InputCaptcha
+import ui.elements.input.InputEmail
+import ui.elements.input.InputPassword
 
 internal class CrmLoginPage {
   private val emailField: SelenideElement = element(By.cssSelector("#username"))
@@ -20,19 +24,19 @@ internal class CrmLoginPage {
     open(pageUrl)
   }
 
-  fun inputEmail(login: String?) {
-    emailField.value = login
+  fun inputEmail(login: String) {
+    InputEmail.inputEmail(emailField, login)
   }
 
-  fun inputPassword(password: String?) {
-    passwordField.value = password
+  fun inputPassword(password: String) {
+    InputPassword.inputPassword(passwordField, password)
   }
 
-  fun inputCaptcha(captcha: String?) {
-    captchaField.value = captcha
+  fun inputCaptcha(captcha: String) {
+    InputCaptcha.inputCaptcha(captchaField, captcha)
   }
 
   fun clickSubmitButton() {
-    submitButton.click()
+    Button.clickButton(submitButton)
   }
 }
