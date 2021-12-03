@@ -1,10 +1,10 @@
 package services
 
-import ui.crm.CrmLoginPage
+import ui.crm.CrmLoginPageCssSelectors
 
 class CrmLoginPageOperations {
 
-  private val crmLoginPage = CrmLoginPage()
+  private val crmLoginPage = CrmLoginPageCssSelectors()
 
   fun openPage(pageUrl: String) {
     crmLoginPage.openLoginPage(pageUrl)
