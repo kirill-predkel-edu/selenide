@@ -6,10 +6,10 @@ internal class Test : BaseTest() {
   @Test
   fun crmLogin() {
     CrmLoginPageOperations().apply {
-      openPage(config.crm.host + config.crm.endpoint)
-      inputEmail(config.user.login)
-      inputPassword(config.user.password)
-      inputCaptcha(config.user.captcha)
+      openPage(config.host + config.crm.loginEndpoint)
+      inputEmail(config.crm.crmUser.login)
+      inputPassword(config.crm.crmUser.password)
+      inputCaptcha(config.crm.crmUser.captcha)
       clickSubmitButton()
     }
   }
