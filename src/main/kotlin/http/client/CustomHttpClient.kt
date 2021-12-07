@@ -1,4 +1,4 @@
-package http.clients
+package http.client
 
 import okhttp3.Headers
 import okhttp3.RequestBody
@@ -6,8 +6,7 @@ import okhttp3.Response
 import okhttp3.internal.EMPTY_HEADERS
 import okhttp3.internal.EMPTY_REQUEST
 
-interface HttpClient {
-  fun getClient(): Any
+interface CustomHttpClient {
 
   fun get(url: String, headers: Headers = EMPTY_HEADERS): Response
 

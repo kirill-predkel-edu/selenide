@@ -1,4 +1,4 @@
-host: "https://es-bravo.moneyman.ru"
+host: "https://es-charlie.moneyman.ru"
 
 #Basic auth
 basicAuth:

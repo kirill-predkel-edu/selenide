@@ -1,19 +1,12 @@
-package http.clients
+package http.client
 
-import http.interceptors.BasicAuthInterceptor
 import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.Response
 
-class OkHttpClient : HttpClient {
-
-  private val client = OkHttpClient.Builder()
-    .addInterceptor(BasicAuthInterceptor("moneyman", "1005"))
-    .build()
-
-  override fun getClient(): OkHttpClient = client
+class CustomOkHttpClient(private val client: OkHttpClient) : CustomHttpClient {
 
   override fun get(url: String, headers: Headers): Response {
     val request = Request.Builder()
@@ -43,9 +36,9 @@ class OkHttpClient : HttpClient {
 
   fun getCookies(headers: Headers): Map<String, String> {
     val cookieHeader = headers["Set-Cookie"]
-    val test = cookieHeader!!.split(";")
+    val mapWithCookies = cookieHeader!!.split(";")
       .map { it.split("=") }.associate { it.first() to it.last() }
-    print(test)
-    return test
+    print(mapWithCookies)
+    return mapWithCookies
   }
 }
