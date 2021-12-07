@@ -20,6 +20,7 @@ internal class RegistrationApiCallTest : BaseTest() {
     }
       .build()
     val response = httpClient.get(url = config.host + config.registration.registrationEndpoint)
+    assertNotNull(response)
     val authUserCookie = response.getCookieByName("AuthUser")
     assertNotNull(authUserCookie)
   }
