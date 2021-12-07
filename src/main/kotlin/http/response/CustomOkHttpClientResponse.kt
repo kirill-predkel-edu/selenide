@@ -2,13 +2,12 @@ package http.response
 
 import okhttp3.Response
 
-class OkHttpClientResponse(private val response: Response) : CustomHttpClientResponse {
+class CustomOkHttpClientResponse(private val response: Response) : CustomHttpClientResponse {
 
   override fun getCookieByName(cookieName: String): String? {
     val cookieHeader = getHeaderByName("Set-Cookie")
     val mapWithCookies = cookieHeader!!.split(";")
       .map { it.split("=") }.associate { it.first() to it.last() }
-    print(mapWithCookies)
     return mapWithCookies[cookieName]
   }
 

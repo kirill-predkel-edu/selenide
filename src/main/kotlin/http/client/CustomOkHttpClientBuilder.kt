@@ -16,9 +16,8 @@ class CustomOkHttpClientBuilder() {
   }
 
   fun addInterceptors(interceptors: List<Interceptor>) {
-    for(interceptor in interceptors) {
+    for (interceptor in interceptors) {
       builder.addInterceptor(interceptor)
     }
   }
-
 }

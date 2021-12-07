@@ -6,7 +6,10 @@ import okhttp3.internal.EMPTY_REQUEST
 
 interface CustomHttpClient {
 
-  fun get(url: String, headers: Map<String, String> = emptyMap()): CustomHttpClientResponse
+  fun get(
+    url: String,
+    headers: Map<String, String> = emptyMap()
+  ): CustomHttpClientResponse
 
   fun post(
     url: String,
