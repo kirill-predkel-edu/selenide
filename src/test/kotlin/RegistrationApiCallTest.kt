@@ -5,10 +5,10 @@ import http.interceptors.LoggingInterceptor
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-internal class Registration : BaseTest() {
+internal class RegistrationApiCallTest : BaseTest() {
 
   @Test
-  fun `Make GET request and verify that AuthUser isn't null` () {
+  fun `Make GET request and verify that AuthUser isn't null`() {
     val httpClient = CustomOkHttpClientBuilder().apply {
       addInterceptors(
         listOf(
@@ -19,8 +19,8 @@ internal class Registration : BaseTest() {
       )
     }
       .build()
-    val responseHeaders = httpClient.get(url = config.host + config.registration.registrationEndpoint).headers
-    val responseCookies = httpClient.getCookies(responseHeaders)
-    assertNotNull(responseCookies["AuthUser"])
+    val response = httpClient.get(url = config.host + config.registration.registrationEndpoint)
+    val authUserCookie = response.getCookieByName("AuthUser")
+    assertNotNull(authUserCookie)
   }
 }
