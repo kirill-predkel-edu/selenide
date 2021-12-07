@@ -1,10 +1,10 @@
 import org.junit.jupiter.api.Test
 import services.CrmLoginPageOperations
 
-internal class Test : BaseTest() {
+internal class CrmLogin : BaseTest() {
 
   @Test
-  fun crmLogin() {
+  fun crmLoginWithValidCredentialsTest() {
     CrmLoginPageOperations().apply {
       openPage(config.host + config.crm.loginEndpoint)
       inputEmail(config.crm.crmUser.login)
