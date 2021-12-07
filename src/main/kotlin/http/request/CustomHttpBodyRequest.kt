@@ -1,0 +1,3 @@
+package http.request
+
+interface CustomHttpBodyRequest

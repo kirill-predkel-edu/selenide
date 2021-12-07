@@ -1,34 +1,35 @@
 package http.client
 
+import http.response.CustomHttpClientResponse
 import http.response.OkHttpClientResponse
-import okhttp3.Headers
+import okhttp3.Headers.Companion.toHeaders
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 
 class CustomOkHttpClient(private val client: OkHttpClient) : CustomHttpClient {
 
-  override fun get(url: String, headers: Headers): OkHttpClientResponse {
+  override fun get(url: String, headers: Map<String,String>): CustomHttpClientResponse {
     val request = Request.Builder()
       .url(url)
-      .headers(headers)
+      .headers(headers.toHeaders())
       .build()
     return OkHttpClientResponse(client.newCall(request).execute())
   }
 
-  override fun post(url: String, headers: Headers, body: RequestBody): OkHttpClientResponse {
+  override fun post(url: String, headers: Map<String,String>, body: RequestBody): CustomHttpClientResponse {
     val request = Request.Builder()
       .url(url)
-      .headers(headers)
+      .headers(headers.toHeaders())
       .post(body)
       .build()
     return OkHttpClientResponse(client.newCall(request).execute())
   }
 
-  override fun delete(url: String, headers: Headers, body: RequestBody): OkHttpClientResponse {
+  override fun delete(url: String, headers: Map<String,String>, body: RequestBody): CustomHttpClientResponse {
     val request = Request.Builder()
       .url(url)
-      .headers(headers)
+      .headers(headers.toHeaders())
       .delete(body)
       .build()
     return OkHttpClientResponse(client.newCall(request).execute())
