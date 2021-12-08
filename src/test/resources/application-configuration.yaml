@@ -2,8 +2,8 @@ host: "https://es-charlie.moneyman.ru"
 
 #Basic auth
 basicAuth:
-  login: "moneyman"
-  password: "1005"
+  login: "test"
+  password: "test"
 
 #CRM
 crm:

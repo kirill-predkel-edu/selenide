@@ -14,4 +14,8 @@ class CustomOkHttpClientResponse(private val response: Response) : CustomHttpCli
   override fun getHeaderByName(headerName: String): String? {
     return response.headers[headerName]
   }
+
+  override fun toString(): String {
+    return response.toString()
+  }
 }
