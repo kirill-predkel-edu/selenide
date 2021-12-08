@@ -1,7 +1,18 @@
-user:
-  login: "admmin"
-  password: "nimda2012"
-  captcha: "11111"
+host: "https://es-charlie.moneyman.ru"
+
+#Basic auth
+basicAuth:
+  login: "test"
+  password: "test"
+
+#CRM
 crm:
-  host: "https://es-bravo.moneyman.ru"
-  endpoint: "/secure/new-admin/index.html#/login"
+  loginEndpoint: "/secure/new-admin/index.html#/login"
+  crmUser:
+    login: "test"
+    password: "test"
+    captcha: "test"
+
+#Registration
+registration:
+  registrationEndpoint: "/client-area/registration"

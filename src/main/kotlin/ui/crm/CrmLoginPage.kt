@@ -7,10 +7,10 @@ import org.openqa.selenium.By
 import ui.elements.button.Button
 import ui.elements.input.InputField
 
-internal class CrmLoginPageName {
-  private val emailField: SelenideElement = element(By.name("username"))
-  private val passwordField: SelenideElement = element(By.name("password"))
-  private val captchaField: SelenideElement = element(By.cssSelector("#captcha"))
+internal class CrmLoginPage {
+  private val emailField: SelenideElement = element(By.id("username"))
+  private val passwordField: SelenideElement = element(By.id("password"))
+  private val captchaField: SelenideElement = element(By.id("captcha"))
   private val submitButton: SelenideElement = element(By.cssSelector(".login-submit-block button"))
 
   fun openLoginPage(pageUrl: String) {
