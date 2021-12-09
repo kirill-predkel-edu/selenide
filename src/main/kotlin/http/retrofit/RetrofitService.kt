@@ -1,4 +1,3 @@
 package http.retrofit
 
-interface RetrofitService {
-}
+interface RetrofitService

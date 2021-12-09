@@ -1,5 +1,5 @@
-import http.retrofit.RegistrationController
-import http.services.RegistrationService
+import http.services.registration.retrofit.RegistrationController
+import http.services.registration.okhttp.RegistrationService
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 

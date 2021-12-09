@@ -1,4 +1,4 @@
-package http.services
+package http.services.registration.okhttp
 
 import config.holder.ApplicationConfigurationHolder
 import http.client.CustomOkHttpClient
