@@ -1,13 +1,15 @@
-package http.services
+package http.services.registration.okhttp
 
 import config.holder.ApplicationConfigurationHolder
 import http.client.CustomOkHttpClient
 import http.response.CustomHttpClientResponse
 
-internal object RegistrationService {
-  private val httpClient = CustomOkHttpClient.getClient()
-  private val base_url = ApplicationConfigurationHolder.getApplicationConfiguration()!!.host
-  private val registration_endpoint = ApplicationConfigurationHolder.getApplicationConfiguration()!!.registration.registrationEndpoint
+object RegistrationService {
+  private val httpClient: CustomOkHttpClient = CustomOkHttpClient.getClient()
+  private val base_url: String = ApplicationConfigurationHolder.getApplicationConfiguration()!!.host
+  private val registration_endpoint: String = ApplicationConfigurationHolder
+    .getApplicationConfiguration()!!
+    .registration.registrationEndpoint
 
   fun makeGetRegistrationCall(): CustomHttpClientResponse {
 
