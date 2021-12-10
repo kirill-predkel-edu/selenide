@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface RegistrationService : RetrofitService {
   @GET("/client-area/registration")
-  fun getRegistrationHeaders(): Call<RetrofitResponse>
+  fun getRegistrationStep(): Call<RetrofitResponse>
 }
