@@ -1,6 +1,7 @@
 package http.services.registration.retrofit
 
 import config.holder.ApplicationConfigurationHolder
+import http.response.RetrofitResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,14 +17,7 @@ class RegistrationController {
       .create(RegistrationService::class.java)
   }
 
-  fun getRegistrationHeaders(): okhttp3.Headers {
-    return service.getRegistrationHeaders().execute().headers()
-  }
-
-  fun getCookieByName(headers: okhttp3.Headers, cookieName: String): String? {
-    val cookieHeader = headers["Set-Cookie"]
-    val mapWithCookies = cookieHeader!!.split(";")
-      .map { it.split("=") }.associate { it.first() to it.last() }
-    return mapWithCookies[cookieName]
+  fun getRegistrationHeaders(): RetrofitResponse {
+    return RetrofitResponse(service.getRegistrationHeaders().execute())
   }
 }

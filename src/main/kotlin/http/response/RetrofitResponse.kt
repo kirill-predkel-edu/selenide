@@ -1,8 +1,8 @@
 package http.response
 
-import okhttp3.Response
+import retrofit2.Response
 
-class CustomOkHttpClientResponse(private val response: Response) : CustomHttpClientResponse {
+class RetrofitResponse(private val response: Response<RetrofitResponse>) : CustomHttpClientResponse {
 
   override fun getCookieByName(cookieName: String): String? {
     val cookieHeader = getHeaderByName("Set-Cookie") ?: throw NullPointerException("Cookies aren't found in response")
@@ -12,6 +12,6 @@ class CustomOkHttpClientResponse(private val response: Response) : CustomHttpCli
   }
 
   override fun getHeaderByName(headerName: String): String? {
-    return response.headers[headerName]
+    return response.headers()[headerName]
   }
 }

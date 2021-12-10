@@ -14,11 +14,12 @@ internal class RegistrationApiCallTest : BaseTest() {
   }
 
   @Test
-  fun `Retrofit - Make GET and verify that AuthUser isn't null`() {
+  fun `Retrofit - Make GET request and verify that AuthUser isn't null`() {
     val expectedCookie = "AuthUser"
     val controller = RegistrationController()
     val headers = controller.getRegistrationHeaders()
-    val authUserCookie = controller.getCookieByName(headers, expectedCookie)
+    val authUserCookie = headers.getCookieByName(expectedCookie)
+    println(authUserCookie)
     assertNotNull(authUserCookie)
   }
 }
