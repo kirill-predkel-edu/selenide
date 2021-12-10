@@ -1,3 +1,4 @@
+import http.response.CustomHttpClientResponse
 import http.response.RetrofitResponse
 import http.services.registration.okhttp.RegistrationService
 import http.services.registration.retrofit.RegistrationController
@@ -9,7 +10,7 @@ internal class RegistrationApiCallTest : BaseTest() {
 
   @Test
   fun `Make GET request and verify that AuthUser isn't null`() {
-    val response = RegistrationService.makeGetRegistrationCall()
+    val response: CustomHttpClientResponse = RegistrationService.makeGetRegistrationCall()
     val authUserCookie: String? = response.getCookieByName(expectedCookie)
     assertNotNull(authUserCookie)
   }
@@ -19,7 +20,6 @@ internal class RegistrationApiCallTest : BaseTest() {
     val controller = RegistrationController()
     val response: RetrofitResponse = controller.getRegistrationResponse()
     val authUserCookie: String? = response.getCookieByName(expectedCookie)
-    println(authUserCookie)
     assertNotNull(authUserCookie)
   }
 }
