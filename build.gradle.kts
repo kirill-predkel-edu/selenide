@@ -31,7 +31,10 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
     implementation("com.codeborne:selenide:$selenideVersion")
-
     testImplementation ("org.jetbrains.kotlin:kotlin-reflect:1.1.0")
     testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
