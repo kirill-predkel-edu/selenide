@@ -3,25 +3,20 @@ import config.properties.TafSystemProperties
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import services.CrmLoginPageOperations
 
 internal class ApplicationPropertiesTest : BaseTest() {
+  private val expectedHost: String = "https://es-delta.moneyman.ru"
 
   @BeforeEach
   fun setUp() {
-    System.setProperty(TafSystemProperties.HOST, "https://es-delta.moneyman.ru")
+    System.setProperty(TafSystemProperties.HOST, expectedHost)
     ApplicationConfigurationHolder.getApplicationConfiguration()
   }
 
   @Test
   fun `Verify configuration provides system properties`() {
-    CrmLoginPageOperations().apply {
-      openPage(config.host + config.crm.loginEndpoint)
-      inputEmail(config.crm.crmUser.login)
-      inputPassword(config.crm.crmUser.password)
-      inputCaptcha(config.crm.crmUser.captcha)
-      clickSubmitButton()
-    }
+    val actualHost = config.host
+    assert(expectedHost == actualHost)
   }
 
   @AfterEach
