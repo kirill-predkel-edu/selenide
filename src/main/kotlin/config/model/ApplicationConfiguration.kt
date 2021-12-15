@@ -12,7 +12,7 @@ internal data class CrmConfiguration(
   val crmUser: CrmUserConfiguration
 )
 
-internal data class CrmUserConfiguration(
+data class CrmUserConfiguration(
   val login: String,
   val password: String,
   val captcha: String

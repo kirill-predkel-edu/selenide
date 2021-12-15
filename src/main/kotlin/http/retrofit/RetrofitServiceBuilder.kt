@@ -1,14 +1,14 @@
-package http.services.registration.retrofit
+package http.retrofit
 
 import config.holder.ApplicationConfigurationHolder
-import http.retrofit.RetrofitService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitServiceBuilder {
+  private const val wiremockPort = ":8081"
   private val baseUrl: String = ApplicationConfigurationHolder.getApplicationConfiguration()!!.host
 
-  fun getBaseUrl() = baseUrl
+  fun getBaseUrl() = baseUrl + wiremockPort
 
   inline fun <reified T : RetrofitService> buildService(): T {
     return Retrofit.Builder()

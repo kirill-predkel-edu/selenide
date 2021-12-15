@@ -1,6 +1,7 @@
 package http.services.registration.retrofit
 
 import http.response.RetrofitResponse
+import http.retrofit.RetrofitServiceBuilder
 
 class RegistrationController {
   private val service: RegistrationService by lazy { registrationServiceInit() }

@@ -9,7 +9,7 @@ internal class RegistrationApiCallTest : BaseTest() {
   private val expectedCookie: String = "AuthUser"
 
   @Test
-   fun `Make GET request and verify that AuthUser isn't null`() {
+  fun `Make GET request and verify that AuthUser isn't null`() {
     val response: CustomHttpClientResponse = RegistrationService.makeGetRegistrationCall()
     val authUserCookie: String? = response.getCookieByName(expectedCookie)
     assertNotNull(authUserCookie)
