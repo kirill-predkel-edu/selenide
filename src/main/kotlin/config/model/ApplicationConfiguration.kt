@@ -1,7 +1,7 @@
 package config.model
 
 internal data class ApplicationConfiguration(
-  val host: String,
+  var host: String,
   val basicAuth: BasicAuth,
   val crm: CrmConfiguration,
   val registration: RegistrationConfiguration
