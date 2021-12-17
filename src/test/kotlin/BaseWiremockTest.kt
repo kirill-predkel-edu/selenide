@@ -1,20 +1,19 @@
+import com.github.tomakehurst.wiremock.WireMockServer
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
-import wiremock.WiremockServer
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal abstract class BaseWiremockTest {
-  private val wiremock = WiremockServer().getWiremock()
+  //val wiremock = CustomWiremockServer()
 
-  @BeforeAll
+ @BeforeAll
   fun setupWireMock() {
-    wiremock.start()
-    WiremockServer().configureWiremock()
+    //wiremock.configureWiremock()
   }
 
   @AfterAll
   fun teardownWiremock() {
-    wiremock.stop()
+
   }
 }

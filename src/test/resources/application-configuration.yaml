@@ -9,10 +9,14 @@ basicAuth:
 crm:
   loginEndpoint: "/secure/new-admin/index.html#/login"
   crmUser:
-    login: "test"
-    password: "test"
-    captcha: "test"
+    login: "admmin"
+    password: "nimda2012"
+    captcha: "11111"
 
 #Registration
 registration:
   registrationEndpoint: "/client-area/registration"
+
+#Wiremock
+wiremockPort: 8081
+wiremockHost: "localhost"

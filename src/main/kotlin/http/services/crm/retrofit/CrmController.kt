@@ -2,8 +2,8 @@ package http.services.crm.retrofit
 
 import config.holder.ApplicationConfigurationHolder
 import http.retrofit.RetrofitServiceBuilder
-import okhttp3.ResponseBody
 import retrofit2.Response
+import wiremock.model.CrmResponse
 
 class CrmController {
   private val crmUser = ApplicationConfigurationHolder.getApplicationConfiguration()!!.crm.crmUser
@@ -13,7 +13,7 @@ class CrmController {
     return RetrofitServiceBuilder.buildService()
   }
 
-  fun postCrmLogin(): Response<ResponseBody> {
+  fun postCrmLogin(): Response<CrmResponse> {
     return service.loginToCrm(crmUser).execute()
   }
 }
