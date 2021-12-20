@@ -5,7 +5,9 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration
 import config.holder.ApplicationConfigurationHolder
 
 class WiremockLocalServer {
-  val wireMockServer by lazy { serverInit() }
+  private val wireMockServer by lazy { serverInit() }
+
+  fun getWiremockServer() = wireMockServer
 
   private fun serverInit(): WireMockServer {
     return ApplicationConfigurationHolder.getApplicationConfiguration()?.let { appConfig ->

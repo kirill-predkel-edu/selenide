@@ -12,24 +12,23 @@ internal class WiremockTestWithLocalServer : BaseWiremockTest() {
   private val expectedLocalizedRole: String = "Super Administrator"
   private val expectedUserName: String = "Master Testov"
   private val expectedRoleId: Int = 11
-  private val server: WiremockLocalServer = WiremockLocalServer()
-  private val client = server.wireMockServer
-  private val localService: LocalService = LocalService(client)
+  private val wiremockLocalServer: WiremockLocalServer = WiremockLocalServer()
+  private val localService: LocalService = LocalService(wiremockLocalServer)
 
   @BeforeEach
   fun startServer() {
-    server.startServer()
+    wiremockLocalServer.startServer()
   }
 
   @AfterEach()
   fun stopServer() {
-    server.stopServer()
+    wiremockLocalServer.stopServer()
     localService.removeMock(CrmLoginMockConfig)
   }
 
   @Test
   fun wiremockTest() {
-    localService.runLocalServer(CrmLoginMockConfig)
+    localService.registerMock(CrmLoginMockConfig)
 
     val response = CrmController().postCrmLogin()
     response.apply {
