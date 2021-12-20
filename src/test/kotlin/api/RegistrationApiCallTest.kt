@@ -1,3 +1,6 @@
+package api
+
+import BaseTest
 import http.response.CustomHttpClientResponse
 import http.response.RetrofitResponse
 import http.services.registration.okhttp.RegistrationService

@@ -9,6 +9,6 @@ object CrmLoginMockConfig: MockConfig {
   override val mockEndpoint: String = "/secure/rest/sign/in"
   override val statusCode: Int = 200
   override val contentType: String = "application/json"
-  override val responseFileName: String = "mock-response.json"
+  override val responseFileName: String = "wiremock/mock-response.json"
   override var stubMapping: StubMapping? = null
 }

@@ -1,3 +1,5 @@
+package wiremock
+
 import http.services.crm.retrofit.CrmController
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
@@ -8,7 +10,7 @@ import wiremock.mockconfig.CrmLoginMockConfig
 import wiremock.mockcontrol.LocalService
 import wiremock.server.WiremockLocalServer
 
-internal class WiremockTestWithLocalServer : BaseWiremockTest() {
+internal class WiremockTestWithLocalServer {
   private val expectedLocalizedRole: String = "Super Administrator"
   private val expectedUserName: String = "Master Testov"
   private val expectedRoleId: Int = 11
@@ -27,7 +29,7 @@ internal class WiremockTestWithLocalServer : BaseWiremockTest() {
   }
 
   @Test
-  fun wiremockTest() {
+  fun `Wiremock local server registered and removed stub`() {
     localService.registerMock(CrmLoginMockConfig)
 
     val response = CrmController().postCrmLogin()

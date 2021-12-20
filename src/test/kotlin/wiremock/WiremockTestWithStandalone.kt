@@ -1,3 +1,5 @@
+package wiremock
+
 import http.services.crm.retrofit.CrmController
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -24,7 +26,7 @@ internal class WiremockTestWithStandalone {
   }
 
   @Test
-  fun wiremockTestWithStandalone() {
+  fun `Wiremock standalone server registered and removed stub`() {
     val response = CrmController().postCrmLogin()
     response.apply {
       assertAll(

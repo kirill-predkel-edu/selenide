@@ -1,3 +1,6 @@
+package ui
+
+import BaseTest
 import org.junit.jupiter.api.Test
 import services.CrmLoginPageOperations
 
