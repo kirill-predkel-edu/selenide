@@ -2,34 +2,42 @@ package wiremock.mockcontrol
 
 import com.github.tomakehurst.wiremock.client.MappingBuilder
 import com.github.tomakehurst.wiremock.client.WireMock
-import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import config.holder.ApplicationConfigurationHolder
 import wiremock.mockconfigs.MockConfig
 import wiremock.mockcontrol.ResponseBuilder.buildMockResponse
 
-class WiremockStandaloneServer(private val mockConfig: MockConfig) : CustomServer {
-  override val wireMockHost = ApplicationConfigurationHolder.getApplicationConfiguration()!!.wiremockHost
-  override val wiremockPort = ApplicationConfigurationHolder.getApplicationConfiguration()!!.wiremockPort
+class WiremockStandaloneServer : CustomServer {
   override val wireMockClient by lazy { serverInit() }
-  override val stubMapping: StubMapping? by lazy { registerService() }
 
-  private fun serverInit() = WireMock(wireMockHost, wiremockPort)
-
-  override fun registerService(): StubMapping? {
-    val stubMapping = wireMockClient.register(getMappingBuilder())
-    stubMapping.id = mockConfig.id
-    return stubMapping
+  private fun serverInit(): WireMock {
+    var wiremockHost: String? = null
+    var wiremockPort = 8081
+    ApplicationConfigurationHolder.getApplicationConfiguration()?.let {
+      wiremockHost = it.wiremockHost
+      wiremockPort = it.wiremockPort
+    }
+    return WireMock(wiremockHost, wiremockPort)
   }
 
-  override fun verifyMock() {
-    assert(stubMapping?.id == mockConfig.id) { "Mapping isn't initialized" }
+  override fun registerService(mockConfig: MockConfig) {
+    val stubMapping = wireMockClient.register(getMappingBuilder(mockConfig))
+    mockConfig.apply {
+      this.id = stubMapping.uuid
+      this.stubMapping = stubMapping
+    }
+    isMockRegistered(mockConfig)
   }
 
-  override fun removeMock() {
-    wireMockClient.removeStubMapping(stubMapping)
+  override fun isMockRegistered(mockConfig: MockConfig): Boolean {
+    val registeredStub = wireMockClient.getStubMapping(mockConfig.id).item
+    return registeredStub.equals(mockConfig.stubMapping)
   }
 
-  override fun getMappingBuilder(): MappingBuilder {
+  fun removeMock(mockConfig: MockConfig) {
+    wireMockClient.removeStubMapping(wireMockClient.getStubMapping(mockConfig.id).item)
+  }
+
+  override fun getMappingBuilder(mockConfig: MockConfig): MappingBuilder {
     val mockResponse = buildMockResponse(mockConfig)
     return WireMock
       .any(WireMock.urlMatching(mockConfig.mockEndpoint))

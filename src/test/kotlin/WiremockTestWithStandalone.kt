@@ -12,8 +12,8 @@ internal class WiremockTestWithStandalone {
 
   @Test
   fun wiremockTestWithStandalone() {
-    val service = CustomWiremockService()
-    val client = service.runStandaloneServer(CrmLoginMockConfig)
+    val service = CustomWiremockService(CrmLoginMockConfig)
+    service.runStandaloneServer()
 
     val response = CrmLoginService().postCrmLogin()
     response.apply {
@@ -23,6 +23,6 @@ internal class WiremockTestWithStandalone {
         { assertEquals(expectedRoleId, this.roleId) },
       )
     }
-    service.removeStandaloneServiceStub(client)
+    service.removeStandaloneServiceStub()
   }
 }

@@ -2,14 +2,14 @@ package wiremock.mockcontrol
 
 import wiremock.mockconfigs.MockConfig
 
-class CustomWiremockService {
-  fun runStandaloneServer(mockConfig: MockConfig): CustomServer {
-    val server = WiremockStandaloneServer(mockConfig)
-    server.verifyMock()
-    return server
+class CustomWiremockService(private val mockConfig: MockConfig) {
+  private val server = WiremockStandaloneServer()
+
+  fun runStandaloneServer() {
+    server.registerService(mockConfig)
   }
 
-  fun removeStandaloneServiceStub(server: CustomServer) {
-    server.removeMock()
+  fun removeStandaloneServiceStub() {
+   server.removeMock(mockConfig)
   }
 }
