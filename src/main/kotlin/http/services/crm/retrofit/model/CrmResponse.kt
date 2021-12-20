@@ -1,4 +1,4 @@
-package wiremock.model
+package http.services.crm.retrofit.model
 
 data class CrmResponse(
   private val id: Int?,

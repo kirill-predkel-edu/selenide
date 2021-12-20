@@ -2,7 +2,7 @@ package http.services.crm.retrofit
 
 import config.holder.ApplicationConfigurationHolder
 import http.retrofit.RetrofitServiceBuilder
-import wiremock.model.CrmResponse
+import http.services.crm.retrofit.model.CrmResponse
 
 class CrmLoginService {
   private val crmUser = ApplicationConfigurationHolder.getApplicationConfiguration()!!.crm.crmUser

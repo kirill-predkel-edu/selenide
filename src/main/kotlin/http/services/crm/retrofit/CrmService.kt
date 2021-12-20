@@ -5,7 +5,7 @@ import http.retrofit.RetrofitService
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
-import wiremock.model.CrmResponse
+import http.services.crm.retrofit.model.CrmResponse
 
 interface CrmService : RetrofitService {
   @POST("/secure/rest/sign/in")

@@ -7,12 +7,8 @@ class WiremockStandaloneServer : CustomServer {
   override val wireMockClient by lazy { serverInit() }
 
   override fun serverInit(): WireMock {
-    var wiremockHost: String? = null
-    var wiremockPort = 8081
-    ApplicationConfigurationHolder.getApplicationConfiguration()?.let {
-      wiremockHost = it.wiremockHost
-      wiremockPort = it.wiremockPort
-    }
-    return WireMock(wiremockHost, wiremockPort)
+    return ApplicationConfigurationHolder.getApplicationConfiguration()?.let { appConfig ->
+      WireMock(appConfig.wiremockHost, appConfig.wiremockPort)
+    }?: throw IllegalStateException("Get application config isn't initialized")
   }
 }
