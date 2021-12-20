@@ -5,7 +5,7 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 
 interface CustomServer {
-  val baseUrl: String
+  val wireMockHost: String
   val wiremockPort: Int
   val wireMockClient: WireMock
   val stubMapping: StubMapping?

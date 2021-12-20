@@ -1,29 +1,28 @@
-import http.services.crm.retrofit.CrmController
+import http.services.crm.retrofit.CrmLoginService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 import wiremock.mockconfigs.CrmLoginMockConfig
 import wiremock.mockcontrol.CustomWiremockService
 
 internal class WiremockTestWithStandalone {
-  private val localizedRole: String = "Super Administrator"
-  private val userName: String = "Master Testov"
-  private val roleId: Int = 11
+  private val expectedLocalizedRole: String = "Super Administrator"
+  private val expectedUserName: String = "Master Testov"
+  private val expectedRoleId: Int = 11
 
   @Test
   fun wiremockTestWithStandalone() {
     val service = CustomWiremockService()
     val client = service.runStandaloneServer(CrmLoginMockConfig)
 
-    val controller = CrmController()
-    val response = controller.postCrmLogin()
-
-    val responseLocalizedRole: String? = response.body()?.localizedRole
-    val responseUserName: String? = response.body()?.userName
-    val responseRoleId: Int? = response.body()?.roleId
-    assertEquals(localizedRole, responseLocalizedRole)
-    assertEquals(userName, responseUserName)
-    assertEquals(roleId, responseRoleId)
-
+    val response = CrmLoginService().postCrmLogin()
+    response.apply {
+      assertAll(
+        { assertEquals(expectedLocalizedRole, this.localizedRole) },
+        { assertEquals(expectedUserName, this.userName) },
+        { assertEquals(expectedRoleId, this.roleId) },
+      )
+    }
     service.removeStandaloneServiceStub(client)
   }
 }

@@ -8,10 +8,12 @@ import wiremock.mockconfigs.MockConfig
 import wiremock.mockcontrol.ResponseBuilder.buildMockResponse
 
 class WiremockStandaloneServer(private val mockConfig: MockConfig) : CustomServer {
-  override val baseUrl = ApplicationConfigurationHolder.getApplicationConfiguration()!!.wiremockHost
+  override val wireMockHost = ApplicationConfigurationHolder.getApplicationConfiguration()!!.wiremockHost
   override val wiremockPort = ApplicationConfigurationHolder.getApplicationConfiguration()!!.wiremockPort
-  override val wireMockClient = WireMock(baseUrl, wiremockPort)
+  override val wireMockClient by lazy { serverInit() }
   override val stubMapping: StubMapping? by lazy { registerService() }
+
+  private fun serverInit() = WireMock(wireMockHost, wiremockPort)
 
   override fun registerService(): StubMapping? {
     val stubMapping = wireMockClient.register(getMappingBuilder())

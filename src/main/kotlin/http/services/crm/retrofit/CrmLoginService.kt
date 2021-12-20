@@ -2,10 +2,9 @@ package http.services.crm.retrofit
 
 import config.holder.ApplicationConfigurationHolder
 import http.retrofit.RetrofitServiceBuilder
-import retrofit2.Response
 import wiremock.model.CrmResponse
 
-class CrmController {
+class CrmLoginService {
   private val crmUser = ApplicationConfigurationHolder.getApplicationConfiguration()!!.crm.crmUser
   private val service: CrmService by lazy { crmServiceInit() }
 
@@ -13,7 +12,10 @@ class CrmController {
     return RetrofitServiceBuilder.buildService()
   }
 
-  fun postCrmLogin(): Response<CrmResponse> {
-    return service.loginToCrm(crmUser).execute()
+  fun postCrmLogin(): CrmResponse {
+    return service.loginToCrm(crmUser).execute().body() ?: throw IllegalStateException(
+      "Login request can't be " +
+          "executed"
+    )
   }
 }

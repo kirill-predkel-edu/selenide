@@ -2,14 +2,16 @@ package wiremock.mockcontrol
 
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder
 import com.github.tomakehurst.wiremock.client.WireMock
-import utils.JsonToString
+import converters.FileConverter
 import wiremock.mockconfigs.MockConfig
 
 object ResponseBuilder {
   fun buildMockResponse(mockConfig: MockConfig): ResponseDefinitionBuilder? {
-    return WireMock.aResponse()
-      .withStatus(mockConfig.statusCode)
-      .withHeader("Content-Type", mockConfig.contentType)
-      .withBody(JsonToString.readJson(mockConfig.responseFileName))
+    return mockConfig.statusCode?.let {
+      WireMock.aResponse()
+        .withStatus(it)
+        .withHeader("Content-Type", mockConfig.contentType)
+        .withBody(FileConverter.jsonToString(mockConfig.responseFileName))
+    }
   }
 }
