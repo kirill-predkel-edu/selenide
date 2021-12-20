@@ -1,9 +1,9 @@
-package wiremock.mockcontrol
+package wiremock.builder
 
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder
 import com.github.tomakehurst.wiremock.client.WireMock
 import converters.FileConverter
-import wiremock.mockconfigs.MockConfig
+import wiremock.mockconfig.MockConfig
 
 object ResponseBuilder {
   fun buildMockResponse(mockConfig: MockConfig): ResponseDefinitionBuilder? {

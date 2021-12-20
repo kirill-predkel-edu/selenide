@@ -2,8 +2,8 @@ import http.services.crm.retrofit.CrmLoginService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
-import wiremock.mockconfigs.CrmLoginMockConfig
-import wiremock.mockcontrol.CustomWiremockService
+import wiremock.mockconfig.CrmLoginMockConfig
+import wiremock.mockcontrol.StandaloneService
 
 internal class WiremockTestWithStandalone {
   private val expectedLocalizedRole: String = "Super Administrator"
@@ -12,10 +12,10 @@ internal class WiremockTestWithStandalone {
 
   @Test
   fun wiremockTestWithStandalone() {
-    val service = CustomWiremockService(CrmLoginMockConfig)
-    service.runStandaloneServer()
+    val service = StandaloneService()
+    service.runStandaloneServer(CrmLoginMockConfig)
 
-    val response = CrmLoginService().postCrmLogin()
+    val response = CrmLoginService().postCrmLoginWithWiremock()
     response.apply {
       assertAll(
         { assertEquals(expectedLocalizedRole, this.localizedRole) },
@@ -23,6 +23,6 @@ internal class WiremockTestWithStandalone {
         { assertEquals(expectedRoleId, this.roleId) },
       )
     }
-    service.removeStandaloneServiceStub()
+    service.removeMock(CrmLoginMockConfig)
   }
 }

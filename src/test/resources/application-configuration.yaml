@@ -20,3 +20,4 @@ registration:
 #Wiremock
 wiremockPort: 8081
 wiremockHost: "localhost"
+wiremockProtocol: "http://"

@@ -4,6 +4,7 @@ internal data class ApplicationConfiguration(
   var host: String,
   val wiremockPort: Int,
   val wiremockHost: String,
+  val wiremockProtocol: String,
   val basicAuth: BasicAuth,
   val crm: CrmConfiguration,
   val registration: RegistrationConfiguration

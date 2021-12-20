@@ -1,4 +1,4 @@
-package wiremock.mockconfigs
+package wiremock.mockconfig
 
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import java.util.*
