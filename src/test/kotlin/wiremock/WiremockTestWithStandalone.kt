@@ -1,6 +1,8 @@
 package wiremock
 
+import config.holder.ApplicationConfigurationHolder
 import http.services.crm.retrofit.CrmController
+import http.services.crm.retrofit.model.CrmResponse
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -27,7 +29,8 @@ internal class WiremockTestWithStandalone {
 
   @Test
   fun `Wiremock standalone server registered and removed stub`() {
-    val response = CrmController().postCrmLogin()
+    val wiremockBaseUrl: String? = ApplicationConfigurationHolder.getWiremockBaseURL()
+    val response: CrmResponse = CrmController(wiremockBaseUrl).postCrmLogin()
     response.apply {
       assertAll(
         { assertEquals(expectedLocalizedRole, this.localizedRole) },
