@@ -12,7 +12,7 @@ import wiremock.mockconfig.CrmLoginMockConfig
 import wiremock.mockcontrol.LocalService
 import wiremock.server.WiremockLocalServer
 
-internal class WiremockTestWithLocalServer: BaseTest() {
+internal class WiremockTestWithLocalServer {
   private val expectedLocalizedRole: String = "Super Administrator"
   private val expectedUserName: String = "Master Testov"
   private val expectedRoleId: Int = 11

@@ -4,16 +4,16 @@ import config.holder.ApplicationConfigurationHolder
 import http.retrofit.RetrofitServiceBuilder
 import http.services.crm.retrofit.model.CrmResponse
 
-class CrmController(private var baseUrl: String?) {
+class CrmController(private var passedBaseUrl: String?) {
   private val config =  ApplicationConfigurationHolder.getApplicationConfiguration()!!
-  private val loginService: CrmService by lazy { crmServiceInit(baseUrl) }
+  private val loginService: CrmService by lazy { crmServiceInit() }
 
-  private fun crmServiceInit(passedBaseUrl: String?): CrmService {
-    var urlToGo: String = passedBaseUrl.orEmpty()
-    if (urlToGo == "") {
-      urlToGo = config.host
+  private fun crmServiceInit(): CrmService {
+    var baseUrl: String = passedBaseUrl.orEmpty()
+    if (baseUrl == "") {
+      baseUrl = config.host
     }
-    return RetrofitServiceBuilder.buildService(urlToGo)
+    return RetrofitServiceBuilder.buildService(baseUrl)
   }
 
   fun postCrmLogin(): CrmResponse {
