@@ -1,4 +1,4 @@
-import http.services.crm.retrofit.CrmLoginService
+import http.services.crm.retrofit.CrmController
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -15,7 +15,7 @@ internal class WiremockTestWithStandalone {
 
   @BeforeEach
   fun startServer() {
-    service.runStandaloneServer(CrmLoginMockConfig)
+    service.registerMock(CrmLoginMockConfig)
   }
 
   @AfterEach
@@ -25,7 +25,7 @@ internal class WiremockTestWithStandalone {
 
   @Test
   fun wiremockTestWithStandalone() {
-    val response = CrmLoginService().postCrmLoginWithWiremock()
+    val response = CrmController().postCrmLogin()
     response.apply {
       assertAll(
         { assertEquals(expectedLocalizedRole, this.localizedRole) },

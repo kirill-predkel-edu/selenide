@@ -18,6 +18,7 @@ registration:
   registrationEndpoint: "/client-area/registration"
 
 #Wiremock
-wiremockPort: 8081
-wiremockHost: "localhost"
-wiremockProtocol: "http://"
+wiremockConfiguration:
+  wiremockPort: 8081
+  wiremockHost: "localhost"
+  wiremockProtocol: "http://"

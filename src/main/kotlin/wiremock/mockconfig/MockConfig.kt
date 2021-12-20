@@ -7,7 +7,7 @@ interface MockConfig {
   var id: UUID?
   val priority: Int?
   val mockEndpoint: String?
-  val statusCode: Int?
+  val statusCode: Int
   val contentType: String?
   val responseFileName: String?
   var stubMapping: StubMapping?

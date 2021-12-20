@@ -1,35 +1,27 @@
-package wiremock.server//package wiremock.mockcontrol
-//
-//import com.github.tomakehurst.wiremock.WireMockServer
-//import com.github.tomakehurst.wiremock.client.WireMock
-//import com.github.tomakehurst.wiremock.client.WireMock.urlMatching
-//import com.github.tomakehurst.wiremock.core.WireMockConfiguration
-//import wiremock.mockconfigs.MockConfig
-//
-//class WiremockLocalServer(private val mockConfig: MockConfig) {
-//  private val wireMockServer: WireMockServer = WireMockServer(
-//    WireMockConfiguration
-//      .options()
-//      .port(8082)
-//  )
-//
-//  fun getWiremock() = wireMockServer
-//
-//  fun addStubForEndpoint() {
-//    val mockResponse = ResponseBuilder.buildMockResponse(mockConfig)
-//    wireMockServer.stubFor(
-//      WireMock
-//        .any(urlMatching(mockConfig.mockEndpoint))
-//        .atPriority(mockConfig.priority)
-//        .willReturn(mockResponse)
-//    )
-//  }
-//
-//  fun start() {
-//    wireMockServer.start()
-//  }
-//
-//  fun stop() {
-//    wireMockServer.stop()
-//  }
-//}
+package wiremock.server
+
+import com.github.tomakehurst.wiremock.WireMockServer
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration
+import config.holder.ApplicationConfigurationHolder
+
+class WiremockLocalServer {
+  val wireMockServer by lazy { serverInit() }
+
+  private fun serverInit(): WireMockServer {
+    return ApplicationConfigurationHolder.getApplicationConfiguration()?.let { appConfig ->
+      WireMockServer(
+        WireMockConfiguration
+          .options()
+          .port(appConfig.wiremockConfiguration.wiremockPort)
+      )
+    } ?: throw IllegalStateException("Application config isn't initialized")
+  }
+
+  fun startServer() {
+    wireMockServer.start()
+  }
+
+  fun stopServer() {
+    wireMockServer.stop()
+  }
+}

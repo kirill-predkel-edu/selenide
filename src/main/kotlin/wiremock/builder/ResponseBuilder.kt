@@ -7,9 +7,9 @@ import wiremock.mockconfig.MockConfig
 
 object ResponseBuilder {
   fun buildMockResponse(mockConfig: MockConfig): ResponseDefinitionBuilder? {
-    return mockConfig.statusCode?.let {
+    return mockConfig.let {
       WireMock.aResponse()
-        .withStatus(it)
+        .withStatus(mockConfig.statusCode)
         .withHeader("Content-Type", mockConfig.contentType)
         .withBody(FileConverter.jsonToString(mockConfig.responseFileName))
     }

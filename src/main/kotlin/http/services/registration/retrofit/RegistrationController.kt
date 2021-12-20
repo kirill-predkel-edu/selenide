@@ -7,7 +7,7 @@ class RegistrationController {
   private val service: RegistrationService by lazy { registrationServiceInit() }
 
   private fun registrationServiceInit(): RegistrationService {
-    return RetrofitServiceBuilder.buildService()
+    return RetrofitServiceBuilder.buildService("http://localhost:8081")
   }
 
   fun getRegistrationResponse(): RetrofitResponse {

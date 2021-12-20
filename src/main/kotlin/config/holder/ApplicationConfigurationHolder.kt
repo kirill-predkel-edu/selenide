@@ -16,4 +16,11 @@ internal object ApplicationConfigurationHolder {
     }
     return applicationConfiguration
   }
+
+  fun getWiremockBaseURL(): String? {
+    return applicationConfiguration?.let {
+      it.wiremockConfiguration.wiremockProtocol +
+          it.wiremockConfiguration.wiremockHost + ":" + it.wiremockConfiguration.wiremockPort
+    }
+  }
 }
