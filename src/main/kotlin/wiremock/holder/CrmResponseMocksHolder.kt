@@ -1,4 +1,4 @@
-package wiremock
+package wiremock.holder
 
 import http.services.crm.retrofit.model.CrmResponse
 

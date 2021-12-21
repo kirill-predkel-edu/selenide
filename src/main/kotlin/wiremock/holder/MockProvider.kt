@@ -1,4 +1,4 @@
-package wiremock
+package wiremock.holder
 
 import converters.FileConverter
 import http.services.crm.retrofit.model.CrmResponse

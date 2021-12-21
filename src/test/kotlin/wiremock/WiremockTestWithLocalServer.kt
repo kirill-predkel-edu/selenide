@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
+import wiremock.holder.CrmResponseMocksHolder
 import wiremock.mockconfig.CrmLoginMockConfig
 import wiremock.mockcontrol.LocalService
 import wiremock.server.WiremockLocalServer

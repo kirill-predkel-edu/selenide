@@ -1,7 +1,7 @@
 package wiremock.mockcontrol
 
-import wiremock.CrmResponseMocksHolder
-import wiremock.CrmResponseMocksHolder.addMockToHolder
+import wiremock.holder.CrmResponseMocksHolder
+import wiremock.holder.CrmResponseMocksHolder.addMockToHolder
 import wiremock.builder.MockBuilder
 import wiremock.mockconfig.MockConfig
 import wiremock.server.WiremockStandaloneServer
