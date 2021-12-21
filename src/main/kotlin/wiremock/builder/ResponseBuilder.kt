@@ -7,11 +7,11 @@ import wiremock.mockconfig.MockConfig
 
 object ResponseBuilder {
   fun buildMockResponse(mockConfig: MockConfig): ResponseDefinitionBuilder? {
-    return mockConfig.let {
+    return mockConfig.run {
       WireMock.aResponse()
-        .withStatus(mockConfig.statusCode)
-        .withHeader("Content-Type", mockConfig.contentType)
-        .withBody(FileConverter.jsonToString(mockConfig.responseFileName))
+        .withStatus(this.statusCode)
+        .withHeader("Content-Type", this.contentType)
+        .withBody(FileConverter.jsonToString(this.responseFileName))
     }
   }
 }

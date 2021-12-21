@@ -1,11 +1,16 @@
 package wiremock.mockcontrol
 
+import wiremock.CrmResponseMocksHolder
+import wiremock.CrmResponseMocksHolder.addMockToHolder
 import wiremock.builder.MockBuilder
 import wiremock.mockconfig.MockConfig
 import wiremock.server.WiremockStandaloneServer
 
 class StandaloneService {
   var client = WiremockStandaloneServer().wireMockClient
+  private val mockIndexInHolder by lazy { addMockToHolder() }
+
+  fun getMockIndex() = mockIndexInHolder
 
   fun registerMock(mockConfig: MockConfig) {
     val mappingBuilder = MockBuilder.getMappingBuilder(mockConfig)
@@ -15,6 +20,7 @@ class StandaloneService {
       this.stubMapping = stubMapping
     }
     isMockRegistered(mockConfig)
+    addMockToHolder()
   }
 
   private fun isMockRegistered(mockConfig: MockConfig): Boolean {
@@ -25,5 +31,6 @@ class StandaloneService {
 
     fun removeMock(mockConfig: MockConfig) {
       client.removeStubMapping(client.getStubMapping(mockConfig.id).item)
+      CrmResponseMocksHolder.removeMockFromHolder(mockIndexInHolder)
     }
   }

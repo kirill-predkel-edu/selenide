@@ -12,12 +12,15 @@ import wiremock.mockconfig.CrmLoginMockConfig
 import wiremock.mockcontrol.LocalService
 import wiremock.server.WiremockLocalServer
 
-internal class WiremockTestWithLocalServer {
-  private val expectedLocalizedRole: String = "Super Administrator"
-  private val expectedUserName: String = "Master Testov"
-  private val expectedRoleId: Int = 11
+internal class WiremockTestWithLocalServer: BaseTest() {
   private val wiremockLocalServer: WiremockLocalServer = WiremockLocalServer()
   private val localService: LocalService = LocalService(wiremockLocalServer)
+
+  private val mock = CrmResponseMocksHolder.getMockFromHolder(localService.getMockIndex())
+  private val expectedLocalizedRole: String? = mock?.localizedRole
+  private val expectedUserName: String? = mock?.userName
+  private val expectedRoleId: Int? = mock?.roleId
+
 
   @BeforeEach
   fun startServer() {
@@ -26,20 +29,20 @@ internal class WiremockTestWithLocalServer {
 
   @AfterEach()
   fun stopServer() {
-    wiremockLocalServer.stopServer()
     localService.removeMock(CrmLoginMockConfig)
+    wiremockLocalServer.stopServer()
   }
 
   @Test
-  fun `Wiremock local server registered and removed stub`() {
+  fun `Login to CRM with wiremock local server`() {
     localService.registerMock(CrmLoginMockConfig)
-    val wiremockBaseUrl: String? = ApplicationConfigurationHolder.getWiremockBaseURL()
-    val response = CrmController(wiremockBaseUrl).postCrmLogin()
+    val wiremockBaseUrl: String = ApplicationConfigurationHolder.getWiremockBaseURL()!!
+    val response = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
     response.apply {
       assertAll(
         { Assertions.assertEquals(expectedLocalizedRole, this.localizedRole) },
         { Assertions.assertEquals(expectedUserName, this.userName) },
-        { Assertions.assertEquals(expectedRoleId, this.roleId) },
+        { Assertions.assertEquals(expectedRoleId, this.roleId) }
       )
     }
   }
