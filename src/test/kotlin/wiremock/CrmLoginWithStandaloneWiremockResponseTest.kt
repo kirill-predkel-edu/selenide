@@ -10,7 +10,7 @@ import org.junit.jupiter.api.assertAll
 import wiremock.mockconfig.CrmLoginMockConfig
 import wiremock.mockcontrol.StandaloneService
 
-internal class WiremockTestWithStandalone : BaseTest() {
+internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
   private val standaloneService: StandaloneService = StandaloneService()
 
   @AfterEach
@@ -19,7 +19,7 @@ internal class WiremockTestWithStandalone : BaseTest() {
   }
 
   @Test
-  fun `Login to CRM with wiremock standalone server`() {
+  fun `Login to CRM request returns response from Wiremock Standalone Server`() {
     standaloneService.registerMock(CrmLoginMockConfig)
 
     val mock = dynamicContext.geStubByConfigName<CrmResponse>(CrmLoginMockConfig.name)

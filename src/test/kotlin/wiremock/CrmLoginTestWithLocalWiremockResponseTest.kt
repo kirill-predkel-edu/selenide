@@ -12,7 +12,7 @@ import wiremock.mockconfig.CrmLoginMockConfig
 import wiremock.mockcontrol.LocalService
 import wiremock.server.WiremockLocalServer
 
-internal class WiremockTestWithLocalServer : BaseTest() {
+internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
   private val wiremockLocalServer: WiremockLocalServer = WiremockLocalServer()
   private val localService: LocalService = LocalService(wiremockLocalServer)
 
@@ -27,7 +27,7 @@ internal class WiremockTestWithLocalServer : BaseTest() {
   }
 
   @Test
-  fun `Login to CRM with wiremock local server`() {
+  fun `Login to CRM request returns response from Wiremock Local Server`() {
     localService.registerMock(CrmLoginMockConfig)
 
     val mock = dynamicContext.geStubByConfigName<CrmResponse>(CrmLoginMockConfig.name)
