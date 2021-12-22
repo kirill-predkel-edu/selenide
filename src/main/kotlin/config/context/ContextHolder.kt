@@ -6,14 +6,13 @@ interface ContextHolder<T> {
   fun setContext(context: T) {
     if (myContext.get() == null) myContext.set(context)
   }
+  fun getContext(): T = myContext.get() ?: throw IllegalStateException("Context isn't initialized")
+
+  fun clearContext() = myContext.remove()
 
   fun initContext(context: T): T {
     clearContext()
     setContext(context)
     return context
   }
-
-  fun getContext(): T = myContext.get() ?: throw IllegalStateException("Context isn't initialized")
-
-  fun clearContext() = myContext.remove()
 }
