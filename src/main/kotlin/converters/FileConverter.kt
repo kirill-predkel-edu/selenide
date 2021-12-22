@@ -10,17 +10,19 @@ import java.nio.file.FileSystems
 import java.nio.file.Files
 
 object FileConverter {
+  const val RESOURCES_PATH = "src/test/resources/"
+
   fun jsonToString(jsonFileName: String?): String? {
     return Thread.currentThread().contextClassLoader.getResourceAsStream(jsonFileName)?.readBytes()
       ?.toString(Charsets.UTF_8)
   }
 
-  fun <T> yamlToObject(filePath: String, objectClass: Class<T>): T =
+  inline fun <reified T : Any> yamlToObject(filePath: String): T =
     Files.newBufferedReader(FileSystems.getDefault().getPath(filePath)).use {
-      ObjectMapper(YAMLFactory()).registerModule(KotlinModule()).readValue(it, objectClass)
+      ObjectMapper(YAMLFactory()).registerModule(KotlinModule()).readValue(it)
     }
 
-    inline fun <reified T : Any> jsonToObject(filePath: String): T {
-      return jacksonObjectMapper().readValue(File(filePath))
+    inline fun <reified T : Any> jsonToObjectFromResources(filePath: String): T {
+      return jacksonObjectMapper().readValue(File("$RESOURCES_PATH$filePath"))
     }
 }

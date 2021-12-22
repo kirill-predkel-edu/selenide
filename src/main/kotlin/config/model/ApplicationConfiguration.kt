@@ -32,4 +32,8 @@ internal data class WiremockConfiguration(
   val wiremockPort: Int,
   val wiremockHost: String,
   val wiremockProtocol: String
-)
+) {
+  fun getWiremockBaseURL(): String {
+    return "$wiremockProtocol$wiremockHost:$wiremockPort"
+  }
+}

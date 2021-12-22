@@ -8,9 +8,9 @@ import wiremock.mockconfig.MockConfig
 object MockBuilder {
   fun getMappingBuilder(mockConfig: MockConfig): MappingBuilder {
     val mockResponse = buildMockResponse(mockConfig)
-    val mappingBuilder: MappingBuilder = WireMock
+    return WireMock
       .any(WireMock.urlMatching(mockConfig.mockEndpoint))
       .atPriority(mockConfig.priority)
-    return mappingBuilder.willReturn(mockResponse)
+      .willReturn(mockResponse)
   }
 }

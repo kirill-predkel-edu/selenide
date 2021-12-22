@@ -6,5 +6,5 @@ import converters.FileConverter.yamlToObject
 internal class ApplicationConfigProvider {
   private val configFilePath: String = "src/test/resources/application/application-configuration.yaml"
 
-  fun readConfiguration(): ApplicationConfiguration = yamlToObject(configFilePath, ApplicationConfiguration::class.java)
+  fun readConfiguration(): ApplicationConfiguration = yamlToObject(configFilePath)
 }

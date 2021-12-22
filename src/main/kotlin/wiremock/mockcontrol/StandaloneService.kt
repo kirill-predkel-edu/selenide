@@ -1,16 +1,14 @@
 package wiremock.mockcontrol
 
-import wiremock.holder.CrmResponseMocksHolder
-import wiremock.holder.CrmResponseMocksHolder.addMockToHolder
+import com.github.tomakehurst.wiremock.client.WireMock
+import config.dynamic.DynamicContextHolder
 import wiremock.builder.MockBuilder
 import wiremock.mockconfig.MockConfig
 import wiremock.server.WiremockStandaloneServer
 
 class StandaloneService {
-  var client = WiremockStandaloneServer().wireMockClient
-  private val mockIndexInHolder by lazy { addMockToHolder() }
-
-  fun getMockIndex() = mockIndexInHolder
+  var client: WireMock = WiremockStandaloneServer().wireMockClient
+  private val context = DynamicContextHolder.getContext()
 
   fun registerMock(mockConfig: MockConfig) {
     val mappingBuilder = MockBuilder.getMappingBuilder(mockConfig)
@@ -20,7 +18,7 @@ class StandaloneService {
       this.stubMapping = stubMapping
     }
     isMockRegistered(mockConfig)
-    addMockToHolder()
+    context.addMockConfig(mockConfig)
   }
 
   private fun isMockRegistered(mockConfig: MockConfig): Boolean {
@@ -28,9 +26,8 @@ class StandaloneService {
     return registeredStub.equals(mockConfig.stubMapping)
   }
 
-
-    fun removeMock(mockConfig: MockConfig) {
-      client.removeStubMapping(client.getStubMapping(mockConfig.id).item)
-      CrmResponseMocksHolder.removeMockFromHolder(mockIndexInHolder)
-    }
+  fun removeMock(mockConfig: MockConfig) {
+    client.removeStubMapping(client.getStubMapping(mockConfig.id).item)
+    context.removeMockConfigByName(mockConfig.name)
   }
+}
