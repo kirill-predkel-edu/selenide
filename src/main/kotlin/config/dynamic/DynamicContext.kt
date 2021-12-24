@@ -5,23 +5,19 @@ import converters.FileConverter
 import wiremock.mockconfig.MockConfig
 
 class DynamicContext {
-  val raisedStubs: MutableList<MockConfig> = mutableListOf()
-
-  private fun getMockConfigByName(configName: StubType): MockConfig {
-    return raisedStubs.first { it.name == configName }
-  }
+  val raisedStubs: MutableMap<StubType, MockConfig> = mutableMapOf()
 
   inline fun <reified T : Any> geStubByConfigName(configName: StubType): T {
-    val pathToResponse: String = raisedStubs.first { it.name == configName }.responseFileName!!
+    val pathToResponse: String = raisedStubs[configName]?.responseFileName ?: throw IllegalStateException("Selected " +
+        "mock isn't in the context")
     return FileConverter.jsonToObjectFromResources(pathToResponse)
   }
 
   fun removeMockConfigByName(stubName: StubType) {
-    val mockToRemove = getMockConfigByName(stubName)
-    raisedStubs.remove(mockToRemove)
+    raisedStubs.remove(stubName)
   }
 
   fun addMockConfig(mock: MockConfig) {
-    raisedStubs.add(mock)
+    raisedStubs[mock.name] = mock
   }
 }
