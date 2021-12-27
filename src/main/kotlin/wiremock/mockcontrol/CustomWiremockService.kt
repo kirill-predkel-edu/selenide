@@ -20,10 +20,12 @@ class CustomWiremockService(server: CustomWiremockServer) {
     context.addMockConfig(mockConfig)
   }
 
-  private fun isMockRegistered(mockConfig: MockConfig): Boolean {
+  private fun isMockRegistered(mockConfig: MockConfig) {
     val registeredStub = client.getStubMapping(mockConfig.id).item
 
-    return registeredStub.equals(mockConfig.stubMapping)
+    if (!registeredStub.equals(mockConfig.stubMapping)) {
+      throw IllegalStateException ("Mock isn't initialized")
+    }
   }
 
   fun removeMock(mockConfig: MockConfig) {

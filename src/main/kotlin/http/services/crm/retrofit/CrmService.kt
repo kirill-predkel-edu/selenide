@@ -7,7 +7,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import http.services.crm.retrofit.model.CrmResponse
 
-interface CrmService : RetrofitService {
+internal interface CrmService : RetrofitService {
   @POST("/secure/rest/sign/in")
   fun loginToCrm(@Body body: CrmUserConfiguration): Call<CrmResponse>
 }

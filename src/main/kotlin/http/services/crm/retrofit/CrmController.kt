@@ -4,7 +4,7 @@ import config.model.CrmUserConfiguration
 import http.retrofit.RetrofitServiceBuilder
 import http.services.crm.retrofit.model.CrmResponse
 
-class CrmController(
+internal class CrmController(
   private var passedBaseUrl: String,
   private var loginService: CrmService = RetrofitServiceBuilder.buildService(passedBaseUrl)
 ) {
