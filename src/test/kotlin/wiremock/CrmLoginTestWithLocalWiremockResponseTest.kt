@@ -5,6 +5,7 @@ import http.services.crm.retrofit.CrmController
 import http.services.crm.retrofit.model.CrmResponse
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
@@ -39,9 +40,12 @@ internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
     val response = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
     response.apply {
       assertAll(
-        { Assertions.assertEquals(expectedLocalizedRole, this.localizedRole) },
-        { Assertions.assertEquals(expectedUserName, this.userName) },
-        { Assertions.assertEquals(expectedRoleId, this.roleId) }
+        { assertEquals(expectedLocalizedRole, this.localizedRole, "Received localized role isn't equal " +
+            "to the expected one") },
+        { assertEquals(expectedUserName, this.userName, "Received user name isn't equal " +
+            "to the expected one") },
+        { assertEquals(expectedRoleId, this.roleId,"Received role id isn't equal " +
+            "to the expected one") },
       )
     }
   }

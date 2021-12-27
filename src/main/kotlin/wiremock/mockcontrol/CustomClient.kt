@@ -8,21 +8,21 @@ import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import java.util.*
 
 class CustomClient<T>(private val client: T) {
-  private val unknownClient: String = "Client isn't recognized"
+  private val unknownClientExceptionMessage: String = "Client isn't recognized"
 
   fun addStub(mappingBuilder: MappingBuilder): StubMapping {
     return when (client) {
       is WireMockServer -> client.stubFor(mappingBuilder)
       is WireMock -> client.register(mappingBuilder)
-      else -> throw IllegalArgumentException(unknownClient)
+      else -> throw IllegalArgumentException(unknownClientExceptionMessage)
     }
   }
 
   fun getStubMapping(id: UUID?): SingleStubMappingResult {
     return when (client) {
-      is WireMockServer -> client.getStubMapping(id)
+      is  WireMockServer-> client.getStubMapping(id)
       is WireMock -> client.getStubMapping(id)
-      else -> throw IllegalArgumentException(unknownClient)
+      else -> throw IllegalArgumentException(unknownClientExceptionMessage)
     }
   }
 
@@ -30,7 +30,7 @@ class CustomClient<T>(private val client: T) {
     return when (client) {
       is WireMockServer -> client.removeStubMapping(stubMapping)
       is WireMock -> client.removeStubMapping(stubMapping)
-      else -> throw IllegalArgumentException(unknownClient)
+      else -> throw IllegalArgumentException(unknownClientExceptionMessage)
     }
   }
 }

@@ -22,6 +22,7 @@ class CustomWiremockService(server: CustomWiremockServer) {
 
   private fun isMockRegistered(mockConfig: MockConfig): Boolean {
     val registeredStub = client.getStubMapping(mockConfig.id).item
+
     return registeredStub.equals(mockConfig.stubMapping)
   }
 
