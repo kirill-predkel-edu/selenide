@@ -1,8 +1,7 @@
 package wiremock.server
 
-import com.github.tomakehurst.wiremock.client.WireMock
+import wiremock.mockcontrol.CustomClient
 
 interface CustomWiremockServer {
-  val wireMockClient: WireMock
-  fun serverInit(): WireMock
+  fun getClient(): CustomClient<*>
 }

@@ -8,19 +8,21 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import wiremock.mockconfig.CrmLoginMockConfig
-import wiremock.mockcontrol.StandaloneService
+import wiremock.mockcontrol.CustomWiremockService
+import wiremock.server.WiremockStandaloneServer
 
 internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
-  private val standaloneService: StandaloneService = StandaloneService()
+  private val wiremockStandaloneServer: WiremockStandaloneServer = WiremockStandaloneServer()
+  private val wiremockService: CustomWiremockService = CustomWiremockService(wiremockStandaloneServer)
 
   @AfterEach
   fun removeMock() {
-    standaloneService.removeMock(CrmLoginMockConfig)
+    wiremockService.removeMock(CrmLoginMockConfig)
   }
 
   @Test
   fun `Login to CRM request returns response from Wiremock Standalone Server`() {
-    standaloneService.registerMock(CrmLoginMockConfig)
+    wiremockService.registerMock(CrmLoginMockConfig)
 
     val mock = dynamicContext.geStubByConfigName<CrmResponse>(CrmLoginMockConfig.name)
     val expectedLocalizedRole: String? = mock.localizedRole

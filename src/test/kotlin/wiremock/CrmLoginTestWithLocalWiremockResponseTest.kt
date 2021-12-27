@@ -9,12 +9,12 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import wiremock.mockconfig.CrmLoginMockConfig
-import wiremock.mockcontrol.LocalService
+import wiremock.mockcontrol.CustomWiremockService
 import wiremock.server.WiremockLocalServer
 
 internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
   private val wiremockLocalServer: WiremockLocalServer = WiremockLocalServer()
-  private val localService: LocalService = LocalService(wiremockLocalServer)
+  private val wiremockService: CustomWiremockService = CustomWiremockService(wiremockLocalServer)
 
   @BeforeEach
   fun startServer() {
@@ -28,7 +28,7 @@ internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
 
   @Test
   fun `Login to CRM request returns response from Wiremock Local Server`() {
-    localService.registerMock(CrmLoginMockConfig)
+    wiremockService.registerMock(CrmLoginMockConfig)
 
     val mock = dynamicContext.geStubByConfigName<CrmResponse>(CrmLoginMockConfig.name)
     val expectedLocalizedRole: String? = mock.localizedRole

@@ -1,18 +1,17 @@
 package wiremock.mockcontrol
 
-import com.github.tomakehurst.wiremock.WireMockServer
 import config.dynamic.DynamicContextHolder
 import wiremock.builder.MockBuilder
 import wiremock.mockconfig.MockConfig
-import wiremock.server.WiremockLocalServer
+import wiremock.server.CustomWiremockServer
 
-class LocalService(server: WiremockLocalServer) {
-  private val wiremockServer: WireMockServer = server.getWiremockServer()
+class CustomWiremockService(server: CustomWiremockServer) {
+  private val client = server.getClient()
   private val context = DynamicContextHolder.getContext()
 
   fun registerMock(mockConfig: MockConfig) {
     val mappingBuilder = MockBuilder.getMappingBuilder(mockConfig)
-    val stubMapping = wiremockServer.stubFor(mappingBuilder)
+    val stubMapping = client.addStub(mappingBuilder)
     mockConfig.apply {
       this.id = stubMapping.uuid
       this.stubMapping = stubMapping
@@ -22,12 +21,12 @@ class LocalService(server: WiremockLocalServer) {
   }
 
   private fun isMockRegistered(mockConfig: MockConfig): Boolean {
-    val registeredStub = wiremockServer.getStubMapping(mockConfig.id).item
+    val registeredStub = client.getStubMapping(mockConfig.id).item
     return registeredStub.equals(mockConfig.stubMapping)
   }
 
   fun removeMock(mockConfig: MockConfig) {
-    wiremockServer.removeStubMapping(wiremockServer.getStubMapping(mockConfig.id).item)
+    client.removeStubMapping(client.getStubMapping(mockConfig.id).item)
     context.removeMockConfigByName(mockConfig.name)
   }
 }
