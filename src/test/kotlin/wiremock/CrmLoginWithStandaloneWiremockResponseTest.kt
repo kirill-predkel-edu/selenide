@@ -15,17 +15,19 @@ import wiremock.server.WiremockStandaloneServer
 internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
   private val wiremockStandaloneServer: WiremockStandaloneServer = WiremockStandaloneServer()
   private val wiremockService: CustomWiremockService = CustomWiremockService(wiremockStandaloneServer)
-  private lateinit var mock: CrmResponse
   private lateinit var wiremockBaseUrl: String
+
+  private lateinit var mock: CrmResponse
   private var expectedLocalizedRole: String? = null
   private var expectedUserName: String? = null
   private var expectedRoleId: Int? = null
 
   @BeforeEach
   fun startServer() {
+    wiremockService.registerMock(CrmLoginMockConfig)
     wiremockBaseUrl = config.wiremockConfiguration.getWiremockBaseURL()
 
-    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name)
+    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponse
     expectedLocalizedRole = mock.localizedRole
     expectedUserName = mock.userName
     expectedRoleId = mock.roleId

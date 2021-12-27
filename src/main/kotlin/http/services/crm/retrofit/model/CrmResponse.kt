@@ -9,4 +9,4 @@ data class CrmResponse(
   val online: String?,
   val error: String?,
   val expired: Boolean?
-)
+) : Response

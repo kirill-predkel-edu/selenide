@@ -2,6 +2,9 @@ package wiremock.mockconfig
 
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import config.StubType
+import converters.FileConverter
+import http.services.crm.retrofit.model.CrmResponse
+import http.services.crm.retrofit.model.Response
 import java.util.*
 
 object CrmLoginMockConfig: MockConfig {
@@ -13,4 +16,5 @@ object CrmLoginMockConfig: MockConfig {
   override val responseFileName: String = "wiremock/mock-response.json"
   override var stubMapping: StubMapping? = null
   override var name: StubType = StubType.CRM_LOGIN_STUB
+  override var content: Response = FileConverter.jsonToObjectFromResources(responseFileName) as CrmResponse
 }

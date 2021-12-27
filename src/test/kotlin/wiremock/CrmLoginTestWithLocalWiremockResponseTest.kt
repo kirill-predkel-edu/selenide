@@ -15,20 +15,20 @@ import wiremock.server.WiremockLocalServer
 internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
   private val wiremockLocalServer: WiremockLocalServer = WiremockLocalServer()
   private val wiremockService: CustomWiremockService = CustomWiremockService(wiremockLocalServer)
-  private lateinit var mock: CrmResponse
   private lateinit var wiremockBaseUrl: String
+
+  private lateinit var mock: CrmResponse
   private var expectedLocalizedRole: String? = null
   private var expectedUserName: String? = null
   private var expectedRoleId: Int? = null
 
   @BeforeEach
   fun startServer() {
-
     wiremockLocalServer.startServer()
     wiremockService.registerMock(CrmLoginMockConfig)
     wiremockBaseUrl = config.wiremockConfiguration.getWiremockBaseURL()
 
-    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name)
+    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponse
     expectedLocalizedRole = mock.localizedRole
     expectedUserName = mock.userName
     expectedRoleId = mock.roleId
@@ -41,7 +41,7 @@ internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
 
   @Test
   fun `Login to CRM request returns response from Wiremock Local Server`() {
-    val response = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
+    val response: CrmResponse = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
     response.apply {
       assertAll(
         { assertEquals(expectedLocalizedRole, this.localizedRole, "Received localized role isn't equal " +
