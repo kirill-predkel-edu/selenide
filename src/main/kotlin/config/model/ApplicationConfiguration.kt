@@ -2,6 +2,7 @@ package config.model
 
 internal data class ApplicationConfiguration(
   var host: String,
+  val wiremockConfiguration: WiremockConfiguration,
   val basicAuth: BasicAuth,
   val crm: CrmConfiguration,
   val registration: RegistrationConfiguration
@@ -26,3 +27,13 @@ internal data class BasicAuth(
   val login: String,
   val password: String,
 )
+
+internal data class WiremockConfiguration(
+  val wiremockPort: Int,
+  val wiremockHost: String,
+  val wiremockProtocol: String
+) {
+  fun getWiremockBaseURL(): String {
+    return "$wiremockProtocol$wiremockHost:$wiremockPort"
+  }
+}

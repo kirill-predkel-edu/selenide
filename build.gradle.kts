@@ -18,6 +18,8 @@ val okhttpVersion: String by project
 val selenideVersion: String by project
 val webDriverManagerVersion: String by project
 val retrofitVersion: String by project
+val wiremockVersion: String by project
+val kotlinReflectVersion: String by project
 
 dependencies {
     implementation(kotlin("stdlib"))
@@ -31,7 +33,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
     implementation("com.codeborne:selenide:$selenideVersion")
-    testImplementation ("org.jetbrains.kotlin:kotlin-reflect:1.1.0")
+    implementation ("com.github.tomakehurst:wiremock-jre8:$wiremockVersion")
+    testImplementation ("org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion")
     testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
 }
 

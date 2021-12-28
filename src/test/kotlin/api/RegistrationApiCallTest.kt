@@ -1,3 +1,6 @@
+package api
+
+import BaseTest
 import http.response.CustomHttpClientResponse
 import http.response.RetrofitResponse
 import http.services.registration.okhttp.RegistrationService
@@ -17,7 +20,7 @@ internal class RegistrationApiCallTest : BaseTest() {
 
   @Test
   fun `Retrofit - Make GET request and verify that AuthUser isn't null`() {
-    val controller = RegistrationController()
+    val controller = RegistrationController(config.host)
     val response: RetrofitResponse = controller.getRegistrationResponse()
     val authUserCookie: String? = response.getCookieByName(expectedCookie)
     assertNotNull(authUserCookie)

@@ -1,4 +1,4 @@
-host: "https://es-bravo.moneyman.ru"
+host: "http://localhost"
 
 #Basic auth
 basicAuth:
@@ -16,3 +16,9 @@ crm:
 #Registration
 registration:
   registrationEndpoint: "/client-area/registration"
+
+#Wiremock
+wiremockConfiguration:
+  wiremockPort: 8081
+  wiremockHost: "localhost"
+  wiremockProtocol: "http://"
