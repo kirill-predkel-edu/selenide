@@ -1,7 +1,7 @@
 package wiremock.server
 
-import wiremock.mockcontrol.CustomClient
+import wiremock.mockcontrol.CustomMockClient
 
 interface CustomWiremockServer {
-  fun getClient(): CustomClient<*>
+  fun getClient(): CustomMockClient<*>
 }

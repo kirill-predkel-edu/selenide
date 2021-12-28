@@ -3,12 +3,12 @@ package wiremock.server
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration
 import config.holder.ApplicationConfigurationHolder
-import wiremock.mockcontrol.CustomClient
+import wiremock.mockcontrol.CustomMockClient
 
 class WiremockLocalServer: CustomWiremockServer {
   private val wireMockServer: WireMockServer by lazy { serverInit() }
 
-  override fun getClient(): CustomClient<WireMockServer> = CustomClient(wireMockServer)
+  override fun getClient(): CustomMockClient<WireMockServer> = CustomMockClient(wireMockServer)
 
   private fun serverInit(): WireMockServer {
     return ApplicationConfigurationHolder.getApplicationConfiguration()?.let { appConfig ->

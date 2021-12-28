@@ -7,7 +7,7 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import java.util.*
 
-class CustomClient<T>(private val client: T) {
+class CustomMockClient<T>(private val client: T) {
   private val unknownClientExceptionMessage: String = "Client isn't recognized"
 
   fun addStub(mappingBuilder: MappingBuilder): StubMapping {

@@ -1,6 +1,6 @@
 package http.services.crm.retrofit.model
 
-data class CrmResponse(
+data class CrmResponseStub(
   val id: Int?,
   val userName: String?,
   val localizedRole: String?,
@@ -9,4 +9,4 @@ data class CrmResponse(
   val online: String?,
   val error: String?,
   val expired: Boolean?
-) : Response
+) : Stub

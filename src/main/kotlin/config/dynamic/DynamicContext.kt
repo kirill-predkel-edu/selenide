@@ -1,13 +1,13 @@
 package config.dynamic
 
 import config.StubType
-import http.services.crm.retrofit.model.Response
+import http.services.crm.retrofit.model.Stub
 import wiremock.mockconfig.MockConfig
 
 class DynamicContext {
   private val raisedStubs: MutableMap<StubType, MockConfig> = mutableMapOf()
 
-  fun geStubByConfigName(configName: StubType): Response? {
+  fun geStubByConfigName(configName: StubType): Stub? {
     return raisedStubs[configName]?.content
   }
 

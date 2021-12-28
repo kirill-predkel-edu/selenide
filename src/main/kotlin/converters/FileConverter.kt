@@ -17,10 +17,11 @@ object FileConverter {
       ?.toString(Charsets.UTF_8)
   }
 
-  inline fun <reified T : Any> yamlToObject(filePath: String): T =
-    Files.newBufferedReader(FileSystems.getDefault().getPath(filePath)).use {
+  inline fun <reified T : Any> yamlToObject(filePath: String): T {
+    return Files.newBufferedReader(FileSystems.getDefault().getPath(filePath)).use {
       ObjectMapper(YAMLFactory()).registerModule(KotlinModule()).readValue(it)
     }
+  }
 
     inline fun <reified T : Any> jsonToObjectFromResources(filePath: String): T {
       return jacksonObjectMapper().readValue(File("$RESOURCES_PATH$filePath"))

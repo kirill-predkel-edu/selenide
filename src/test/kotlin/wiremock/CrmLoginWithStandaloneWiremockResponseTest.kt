@@ -2,7 +2,7 @@ package wiremock
 
 import BaseTest
 import http.services.crm.retrofit.CrmController
-import http.services.crm.retrofit.model.CrmResponse
+import http.services.crm.retrofit.model.CrmResponseStub
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -17,7 +17,7 @@ internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
   private val wiremockService: CustomWiremockService = CustomWiremockService(wiremockStandaloneServer)
   private lateinit var wiremockBaseUrl: String
 
-  private lateinit var mock: CrmResponse
+  private lateinit var mock: CrmResponseStub
   private var expectedLocalizedRole: String? = null
   private var expectedUserName: String? = null
   private var expectedRoleId: Int? = null
@@ -27,7 +27,7 @@ internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
     wiremockService.registerMock(CrmLoginMockConfig)
     wiremockBaseUrl = config.wiremockConfiguration.getWiremockBaseURL()
 
-    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponse
+    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponseStub
     expectedLocalizedRole = mock.localizedRole
     expectedUserName = mock.userName
     expectedRoleId = mock.roleId
@@ -40,7 +40,7 @@ internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
 
   @Test
   fun `Login to CRM request returns response from Wiremock Standalone Server`() {
-    val response: CrmResponse = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
+    val response: CrmResponseStub = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
     response.apply {
       assertAll(
         { assertEquals(expectedLocalizedRole, this.localizedRole, "Received localized role isn't equal " +

@@ -2,7 +2,7 @@ package wiremock.mockconfig
 
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import config.StubType
-import http.services.crm.retrofit.model.Response
+import http.services.crm.retrofit.model.Stub
 import java.util.*
 
 interface MockConfig {
@@ -14,5 +14,5 @@ interface MockConfig {
   val responseFileName: String?
   var stubMapping: StubMapping?
   var name: StubType
-  var content: Response
+  var content: Stub
 }
