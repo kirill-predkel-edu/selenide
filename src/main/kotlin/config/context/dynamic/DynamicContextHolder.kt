@@ -1,4 +1,4 @@
-package config.dynamic
+package config.context.dynamic
 
 import config.context.ContextHolder
 
