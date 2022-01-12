@@ -1,21 +1,26 @@
-import config.context.dynamic.DynamicAuthUserContext
+import config.context.dynamic.DynamicContext
 import config.context.dynamic.DynamicContextHolder
-import config.context.dynamic.DynamicStubContext
 import config.holder.ApplicationConfigurationHolder
 import config.model.ApplicationConfiguration
 import driver.provider.WebDriverFactoryManager
+import http.response.RegistrationResponseObservable
+import http.response.RegistrationResponseObserver
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal abstract class BaseTest {
   lateinit var config: ApplicationConfiguration
-  var dynamicStubContext = DynamicContextHolder.initContext(DynamicStubContext()) as DynamicStubContext
-  var authUserContext = DynamicContextHolder.initContext(DynamicAuthUserContext())
+  lateinit var dynamicContext: DynamicContext
 
   @BeforeAll
   fun setup() {
+    DynamicContextHolder.initContext(DynamicContext())
+    dynamicContext = DynamicContextHolder.getContext()
+    RegistrationResponseObservable.addWatcher(dynamicContext.getSessionContext())
+
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
+
     WebDriverFactoryManager().setWebDriverFactory()
   }
 }

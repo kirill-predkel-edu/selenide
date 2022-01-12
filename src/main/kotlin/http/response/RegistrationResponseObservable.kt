@@ -7,8 +7,6 @@ object RegistrationResponseObservable {
     list.add(observer)
   }
   fun notifyWatchers(response: RetrofitResponse) {
-    for (observer in list) {
-      observer.makeActionWithResponse(response)
-    }
+    list.forEach { it.updateAuthUserCookie(response) }
   }
 }

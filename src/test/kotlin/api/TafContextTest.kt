@@ -1,8 +1,6 @@
 package api
 
 import BaseTest
-import http.response.RegistrationResponseObservable
-import http.response.RegistrationResponseObserver
 import config.context.getAuthUser
 import http.response.RetrofitResponse
 import http.services.registration.retrofit.RegistrationController
@@ -16,14 +14,14 @@ internal class TafContextTest : BaseTest() {
 
   @Test
   fun `TAF Context - Store AuthUser to context and verify token is stored`() {
-    RegistrationResponseObservable.addWatcher(authUserContext as RegistrationResponseObserver)
-
     val controller = RegistrationController(config.host)
     val response: RetrofitResponse = controller.getRegistrationResponse()
 
-    authUserCookieFromContext = getAuthUser().toString()
+    authUserCookieFromContext = getAuthUser()
     authUserCookieFromResponse = response.getCookieByName(authUserHeaderName).toString()
-    assertEquals(authUserCookieFromResponse, authUserCookieFromContext, "AuthUser from context and response aren't " +
-        "equal")
+    assertEquals(
+      authUserCookieFromResponse, authUserCookieFromContext, "AuthUser from context and response aren't " +
+          "equal"
+    )
   }
 }

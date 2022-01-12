@@ -10,9 +10,8 @@ interface ContextHolder<T> {
 
   fun clearContext() = myContext.remove()
 
-  fun initContext(context: T): T {
+  fun initContext(context: T) {
     clearContext()
     setContext(context)
-    return context
   }
 }

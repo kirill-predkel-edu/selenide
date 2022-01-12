@@ -27,7 +27,7 @@ internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
     wiremockService.registerMock(CrmLoginMockConfig)
     wiremockBaseUrl = config.wiremockConfiguration.getWiremockBaseURL()
 
-    mock = dynamicStubContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponseStub
+    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponseStub
     expectedLocalizedRole = mock.localizedRole
     expectedUserName = mock.userName
     expectedRoleId = mock.roleId
