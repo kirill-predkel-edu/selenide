@@ -11,12 +11,11 @@ import org.junit.jupiter.api.TestInstance
 internal abstract class BaseTest {
   lateinit var config: ApplicationConfiguration
   var dynamicStubContext = DynamicContextHolder.initContext(DynamicStubContext()) as DynamicStubContext
-
+  var authUserContext = DynamicContextHolder.initContext(DynamicAuthUserContext())
 
   @BeforeAll
   fun setup() {
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
     WebDriverFactoryManager().setWebDriverFactory()
-    DynamicContextHolder.initContext(DynamicAuthUserContext())
   }
 }
