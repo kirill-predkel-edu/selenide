@@ -2,16 +2,12 @@ package config.context.dynamic
 
 import config.StubType
 import config.context.SessionContext
-import http.response.RegistrationResponseObserver
 import http.services.crm.retrofit.model.Stub
 import wiremock.mockconfig.MockConfig
 
-class DynamicContext: RegistrationResponseObserver {
+class DynamicContext {
   private val sessionContext = SessionContext()
   fun getSessionContext() = sessionContext
-
-  private var authUserToken: String = sessionContext.getAuthUserCookie()
-  fun getAuthUserToken() = authUserToken
 
   //dynamic stub context
   private val raisedStubs: MutableMap<StubType, MockConfig> = mutableMapOf()
@@ -26,9 +22,5 @@ class DynamicContext: RegistrationResponseObserver {
 
   fun addMockConfig(mock: MockConfig) {
     raisedStubs[mock.name] = mock
-  }
-
-  override fun updateAuthUserCookie(newAuthUserToken: String) {
-    this.authUserToken = newAuthUserToken
   }
 }

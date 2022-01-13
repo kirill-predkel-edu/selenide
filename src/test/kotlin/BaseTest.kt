@@ -4,6 +4,7 @@ import config.context.sessionContext
 import config.holder.ApplicationConfigurationHolder
 import config.model.ApplicationConfiguration
 import driver.provider.WebDriverFactoryManager
+import http.response.ResponseObserverManager
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
@@ -16,7 +17,7 @@ internal abstract class BaseTest {
   fun setup() {
     DynamicContextHolder.initContext(DynamicContext())
     dynamicContext = DynamicContextHolder.getContext()
-    sessionContext().addRegistrationResponseObserver(dynamicContext)
+    ResponseObserverManager.addRegistrationResponseObserver(sessionContext())
 
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
 

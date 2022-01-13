@@ -11,7 +11,7 @@ class RegistrationController(
 
   fun getRegistrationResponse(): RetrofitResponse {
     val response = RetrofitResponse(service.getRegistrationStep().execute())
-    sessionContext().setAuthUserCookie(response)
+    sessionContext().receiveAuthUserCookie(response)
     return response
   }
 }

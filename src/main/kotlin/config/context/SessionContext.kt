@@ -1,28 +1,22 @@
 package config.context
 
 import http.response.RegistrationResponseObserver
+import http.response.ResponseObserverManager
 import http.response.RetrofitResponse
 
-class SessionContext {
-  private var registrationResponseObservers: MutableList<RegistrationResponseObserver> = mutableListOf()
+class SessionContext: RegistrationResponseObserver {
 
   private var authUser: String = ""
   private val authUserHeaderName = "AuthUser"
 
   fun getAuthUserCookie(): String = authUser
 
-  fun setAuthUserCookie(response: RetrofitResponse) {
-    response.getCookieByName(authUserHeaderName)?.let {
-      authUser = it
-      this.notifyAuthUserChanges(it)
+  fun receiveAuthUserCookie(response: RetrofitResponse) {
+    val authUser = response.getCookieByName(authUserHeaderName)
+    authUser?.let { ResponseObserverManager.notifyAuthUserChanges(it) }
     }
-  }
 
-  fun addRegistrationResponseObserver(observer: RegistrationResponseObserver) {
-    registrationResponseObservers.add(observer)
-  }
-
-  private fun notifyAuthUserChanges(authUserToken: String) {
-    registrationResponseObservers.forEach { it.updateAuthUserCookie(authUserToken) }
+  override fun updateAuthUserCookie(newAuthUserToken: String) {
+    authUser = newAuthUserToken
   }
 }
