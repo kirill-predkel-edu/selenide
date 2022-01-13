@@ -5,6 +5,7 @@ import config.holder.ApplicationConfigurationHolder
 import config.model.ApplicationConfiguration
 import driver.provider.WebDriverFactoryManager
 import http.response.ResponseObserverManager
+import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
@@ -22,5 +23,10 @@ internal abstract class BaseTest {
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
 
     WebDriverFactoryManager().setWebDriverFactory()
+  }
+
+  @AfterAll
+  fun teardown() {
+    DynamicContextHolder.clearContext()
   }
 }
