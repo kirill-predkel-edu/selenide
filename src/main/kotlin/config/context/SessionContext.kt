@@ -1,9 +1,11 @@
 package config.context
 
-import http.response.RegistrationResponseObservable
+import http.response.RegistrationResponseObserver
 import http.response.RetrofitResponse
 
 class SessionContext {
+  private var registrationResponseObservers: MutableList<RegistrationResponseObserver> = mutableListOf()
+
   private var authUser: String = ""
   private val authUserHeaderName = "AuthUser"
 
@@ -12,7 +14,15 @@ class SessionContext {
   fun setAuthUserCookie(response: RetrofitResponse) {
     response.getCookieByName(authUserHeaderName)?.let {
       authUser = it
-      RegistrationResponseObservable.notifyWatchers(it)
+      this.notifyAuthUserChanges(it)
     }
+  }
+
+  fun addRegistrationResponseObserver(observer: RegistrationResponseObserver) {
+    registrationResponseObservers.add(observer)
+  }
+
+  private fun notifyAuthUserChanges(authUserToken: String) {
+    registrationResponseObservers.forEach { it.updateAuthUserCookie(authUserToken) }
   }
 }
