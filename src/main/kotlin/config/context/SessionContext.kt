@@ -4,19 +4,22 @@ import http.response.RegistrationResponseObserver
 import http.response.ResponseObserverManager
 import http.response.RetrofitResponse
 
-class SessionContext: RegistrationResponseObserver {
-
+class SessionContext : RegistrationResponseObserver {
   private var authUser: String = ""
   private val authUserHeaderName = "AuthUser"
 
-  fun getAuthUserCookie(): String = authUser
-
-  fun receiveAuthUserCookie(response: RetrofitResponse) {
-    val authUser = response.getCookieByName(authUserHeaderName)
-    authUser?.let { ResponseObserverManager.notifyAuthUserChanges(it) }
+  var serviceResponse: RetrofitResponse? = null
+    set(value) {
+      field = value
+      ResponseObserverManager.notifyListeners()
     }
 
-  override fun updateAuthUserCookie(newAuthUserToken: String) {
-    authUser = newAuthUserToken
+  fun getAuthUserCookie(): String = authUser
+
+  override fun updateAuthUserCookie() {
+    val newAuthUser: String? = serviceResponse?.getCookieByName(authUserHeaderName)
+    newAuthUser?.let {
+      authUser = it
+    }
   }
 }

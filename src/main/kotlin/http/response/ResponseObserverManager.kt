@@ -7,7 +7,7 @@ object ResponseObserverManager {
     registrationResponseObservers.add(observer)
   }
 
-  fun notifyAuthUserChanges(authUserToken: String) {
-    registrationResponseObservers.forEach { it.updateAuthUserCookie(authUserToken) }
+  fun notifyListeners() {
+    registrationResponseObservers.forEach { it.updateAuthUserCookie() }
   }
 }

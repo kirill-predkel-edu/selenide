@@ -26,7 +26,7 @@ internal abstract class BaseTest {
   }
 
   @AfterAll
-  fun teardown() {
+  fun cleanupOverallTestConfiguration() {
     DynamicContextHolder.clearContext()
   }
 }
