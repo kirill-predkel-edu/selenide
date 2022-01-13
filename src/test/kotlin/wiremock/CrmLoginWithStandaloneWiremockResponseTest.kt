@@ -1,6 +1,7 @@
 package wiremock
 
 import BaseTest
+import config.context.stubContext
 import http.services.crm.retrofit.CrmController
 import http.services.crm.retrofit.model.CrmResponseStub
 import org.junit.jupiter.api.AfterEach
@@ -27,7 +28,7 @@ internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
     wiremockService.registerMock(CrmLoginMockConfig)
     wiremockBaseUrl = config.wiremockConfiguration.getWiremockBaseURL()
 
-    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponseStub
+    mock = stubContext().geStubByConfigName(CrmLoginMockConfig.name) as CrmResponseStub
     expectedLocalizedRole = mock.localizedRole
     expectedUserName = mock.userName
     expectedRoleId = mock.roleId
