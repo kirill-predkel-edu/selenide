@@ -19,6 +19,7 @@ internal class TafContextTest : BaseTest() {
 
     authUserCookieFromContext = getAuthUser()
     authUserCookieFromResponse = response.getCookieByName(authUserHeaderName).toString()
+
     assertEquals(
       authUserCookieFromResponse, authUserCookieFromContext, "AuthUser from context and response aren't " +
           "equal"

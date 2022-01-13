@@ -6,7 +6,7 @@ object RegistrationResponseObservable {
   fun addWatcher(observer: RegistrationResponseObserver) {
     list.add(observer)
   }
-  fun notifyWatchers(response: RetrofitResponse) {
-    list.forEach { it.updateAuthUserCookie(response) }
+  fun notifyWatchers(authUserToken: String) {
+    list.forEach { it.updateAuthUserCookie(authUserToken) }
   }
 }

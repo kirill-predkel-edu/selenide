@@ -1,5 +1,5 @@
 package http.response
 
 interface RegistrationResponseObserver {
-  fun updateAuthUserCookie(response: RetrofitResponse)
+  fun updateAuthUserCookie(newAuthUserToken: String)
 }

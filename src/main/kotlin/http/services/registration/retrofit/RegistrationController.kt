@@ -1,6 +1,6 @@
 package http.services.registration.retrofit
 
-import http.response.RegistrationResponseObservable
+import config.context.sessionContext
 import http.response.RetrofitResponse
 import http.retrofit.RetrofitServiceBuilder
 
@@ -11,7 +11,7 @@ class RegistrationController(
 
   fun getRegistrationResponse(): RetrofitResponse {
     val response = RetrofitResponse(service.getRegistrationStep().execute())
-    RegistrationResponseObservable.notifyWatchers(response)
+    sessionContext().setAuthUserCookie(response)
     return response
   }
 }

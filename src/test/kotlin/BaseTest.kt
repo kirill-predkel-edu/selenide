@@ -17,7 +17,7 @@ internal abstract class BaseTest {
   fun setup() {
     DynamicContextHolder.initContext(DynamicContext())
     dynamicContext = DynamicContextHolder.getContext()
-    RegistrationResponseObservable.addWatcher(dynamicContext.getSessionContext())
+    RegistrationResponseObservable.addWatcher(dynamicContext)
 
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
 
