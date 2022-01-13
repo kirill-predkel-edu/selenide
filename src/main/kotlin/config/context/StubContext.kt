@@ -4,7 +4,7 @@ import config.StubType
 import http.services.crm.retrofit.model.Stub
 import wiremock.mockconfig.MockConfig
 
-class StubContext {
+internal class StubContext {
   private val raisedStubs: MutableMap<StubType, MockConfig> = mutableMapOf()
 
   fun geStubByConfigName(configName: StubType): Stub? {

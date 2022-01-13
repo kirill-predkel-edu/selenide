@@ -4,7 +4,7 @@ import http.response.RegistrationResponseObserver
 import http.response.ResponseObserverManager
 import http.response.RetrofitResponse
 
-class SessionContext : RegistrationResponseObserver {
+internal class SessionContext : RegistrationResponseObserver {
   private var authUser: String = ""
   private val authUserHeaderName = "AuthUser"
 
