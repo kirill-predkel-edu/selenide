@@ -12,12 +12,10 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal abstract class BaseTest {
   lateinit var config: ApplicationConfiguration
-  lateinit var dynamicContext: DynamicContext
 
   @BeforeAll
   fun setup() {
     DynamicContextHolder.initContext(DynamicContext())
-    dynamicContext = DynamicContextHolder.getContext()
     ResponseObserverManager.addRegistrationResponseObserver(sessionContext())
 
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!

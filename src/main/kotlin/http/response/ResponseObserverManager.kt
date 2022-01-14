@@ -1,13 +1,13 @@
 package http.response
 
 object ResponseObserverManager {
-  private var registrationResponseObservers: MutableList<RegistrationResponseObserver> = mutableListOf()
+  private var registrationResponseObservers: MutableList<Observer> = mutableListOf()
 
-  fun addRegistrationResponseObserver(observer: RegistrationResponseObserver) {
+  fun addRegistrationResponseObserver(observer: Observer) {
     registrationResponseObservers.add(observer)
   }
 
-  fun notifyListeners() {
-    registrationResponseObservers.forEach { it.updateAuthUserCookie() }
+  fun notifyObservers() {
+    registrationResponseObservers.forEach { it.update() }
   }
 }

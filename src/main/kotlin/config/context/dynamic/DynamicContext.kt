@@ -3,10 +3,8 @@ package config.context.dynamic
 import config.context.SessionContext
 import config.context.StubContext
 
-class DynamicContext {
-  private val sessionContext = SessionContext()
-  fun getSessionContext() = sessionContext
+internal class DynamicContext {
+  val sessionContext = SessionContext()
+  val stubContext = StubContext()
 
-  private val stubContext = StubContext()
-  fun getStubContext() = stubContext
 }
