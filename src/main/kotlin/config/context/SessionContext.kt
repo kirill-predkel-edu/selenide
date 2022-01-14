@@ -1,25 +1,16 @@
 package config.context
 
-import http.response.Observer
-import http.response.ResponseObserverManager
+import config.context.observer.EventManager
+import config.context.observer.EventTypes
 import http.response.RetrofitResponse
 
-internal class SessionContext : Observer {
-  private var authUser: String = ""
-  private val authUserHeaderName = "AuthUser"
+internal class SessionContext {
+  var events: EventManager = EventManager(EventTypes.NEW_RESPONSE)
+  var authUser: String = ""
 
   var serviceResponse: RetrofitResponse? = null
     set(value) {
       field = value
-      ResponseObserverManager.notifyObservers()
+      events.notify(EventTypes.NEW_RESPONSE)
     }
-
-  fun getAuthUserCookie(): String = authUser
-
-  override fun update() {
-    val newAuthUser: String? = serviceResponse?.getCookieByName(authUserHeaderName)
-    newAuthUser?.let {
-      authUser = it
-    }
-  }
 }
