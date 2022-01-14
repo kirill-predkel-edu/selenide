@@ -6,5 +6,4 @@ import config.context.StubContext
 internal class DynamicContext {
   val sessionContext = SessionContext()
   val stubContext = StubContext()
-
 }
