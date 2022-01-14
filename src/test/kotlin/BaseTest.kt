@@ -1,5 +1,5 @@
-import config.context.observer.EventTypes
-import config.context.observer.ResponseListener
+import config.context.listener.EventTypes
+import config.context.listener.ResponseListener
 import config.context.dynamic.DynamicContext
 import config.context.dynamic.DynamicContextHolder
 import config.context.sessionContext

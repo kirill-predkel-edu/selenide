@@ -1,4 +1,4 @@
-package config.context.observer
+package config.context.listener
 
 class EventManager(vararg events: EventTypes) {
   private var listeners: MutableMap<EventTypes, MutableList<EventListener>> = mutableMapOf()

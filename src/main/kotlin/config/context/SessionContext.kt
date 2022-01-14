@@ -1,7 +1,7 @@
 package config.context
 
-import config.context.observer.EventManager
-import config.context.observer.EventTypes
+import config.context.listener.EventManager
+import config.context.listener.EventTypes
 import http.response.RetrofitResponse
 
 internal class SessionContext {
