@@ -20,7 +20,7 @@ internal class TafContextTest : BaseTest() {
   }
 
   @Test
-  fun `TAF Context - Store AuthUser to context and verify token is stored`() {
+  fun `Store registration response to context and verify AuthUser token is stored by listener`() {
     val response: RetrofitResponse = controller.getRegistrationResponse()
 
     actualAuthUser = getAuthUser()
