@@ -5,18 +5,19 @@ import config.context.listener.ResponseListener
 import config.context.sessionContext
 import config.holder.ApplicationConfigurationHolder
 import config.model.ApplicationConfiguration
+import driver.provider.WebDriverFactoryManager
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal abstract class BaseTest {
+internal abstract class  WebDriverBaseTest {
   protected lateinit var config: ApplicationConfiguration
 
   @BeforeAll
   fun setup() {
+    WebDriverFactoryManager().setWebDriverFactory()
     DynamicContextHolder.initContext(DynamicContext())
-    sessionContext().events.subscribe(EventTypes.NEW_RESPONSE, ResponseListener())
 
     config = ApplicationConfigurationHolder.getApplicationConfiguration()!!
   }

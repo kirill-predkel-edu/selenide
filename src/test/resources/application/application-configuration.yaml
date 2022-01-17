@@ -1,4 +1,4 @@
-host: "http://localhost"
+host: "https://es-bravo.moneyman.ru"
 
 #Basic auth
 basicAuth:

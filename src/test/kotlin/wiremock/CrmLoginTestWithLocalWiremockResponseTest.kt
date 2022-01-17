@@ -1,6 +1,7 @@
 package wiremock
 
 import BaseTest
+import config.context.stubContext
 import http.services.crm.retrofit.CrmController
 import http.services.crm.retrofit.model.CrmResponseStub
 import org.junit.jupiter.api.AfterEach
@@ -28,7 +29,7 @@ internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
     wiremockService.registerMock(CrmLoginMockConfig)
     wiremockBaseUrl = config.wiremockConfiguration.getWiremockBaseURL()
 
-    mock = dynamicContext.geStubByConfigName(CrmLoginMockConfig.name) as CrmResponseStub
+    mock = stubContext().geStubByConfigName(CrmLoginMockConfig.name) as CrmResponseStub
     expectedLocalizedRole = mock.localizedRole
     expectedUserName = mock.userName
     expectedRoleId = mock.roleId
@@ -44,12 +45,12 @@ internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
     val response: CrmResponseStub = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
     response.apply {
       assertAll(
-        { assertEquals(expectedLocalizedRole, this.localizedRole, "Received localized role isn't equal to the " +
-            "expected one") },
-        { assertEquals(expectedUserName, this.userName, "Received user name isn't equal " +
-            "to the expected one") },
-        { assertEquals(expectedRoleId, this.roleId,"Received role id isn't equal " +
-            "to the expected one") },
+        { assertEquals(expectedLocalizedRole, this.localizedRole,
+          "Received localized role isn't equal to the expected one") },
+        { assertEquals(expectedUserName, this.userName,
+          "Received user name isn't equalto the expected one") },
+        { assertEquals(expectedRoleId, this.roleId,
+          "Received role id isn't equal to the expected one") },
       )
     }
   }

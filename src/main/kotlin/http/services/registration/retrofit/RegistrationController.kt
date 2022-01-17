@@ -1,5 +1,6 @@
 package http.services.registration.retrofit
 
+import config.context.sessionContext
 import http.response.RetrofitResponse
 import http.retrofit.RetrofitServiceBuilder
 
@@ -9,6 +10,7 @@ class RegistrationController(
 ) {
 
   fun getRegistrationResponse(): RetrofitResponse {
-    return RetrofitResponse(service.getRegistrationStep().execute())
+    val response = service.getRegistrationStep().execute()
+    return RetrofitResponse(response).also { sessionContext().serviceResponse = it }
   }
 }
