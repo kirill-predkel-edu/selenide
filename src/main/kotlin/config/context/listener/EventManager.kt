@@ -1,16 +1,16 @@
 package config.context.listener
 
-class EventManager(vararg events: EventTypes) {
+class EventManager {
   private var listeners: MutableMap<EventTypes, MutableList<EventListener>> = mutableMapOf()
 
-  init {
-    events.forEach {
-      listeners[it] = mutableListOf()
-    }
-  }
 
-  fun subscribe(eventType: EventTypes, listener: EventListener) {
-    listeners[eventType]?.add(listener)
+  fun subscribe(eventType: EventTypes, vararg listener: EventListener) {
+    if (listeners[eventType] == null) {
+      listeners[eventType] = mutableListOf(*listener)
+    }
+    else {
+      listeners[eventType]?.addAll(listener) 
+    }
   }
 
   fun unsubscribe(eventType: EventTypes, listener: EventListener) {
@@ -18,8 +18,8 @@ class EventManager(vararg events: EventTypes) {
   }
 
   fun notify(eventType: EventTypes) {
-    listeners[eventType]?.forEach {
-      it.update(eventType)
+    listeners[eventType]?.forEach { eventListener ->
+      eventListener.update()
     }
   }
 }

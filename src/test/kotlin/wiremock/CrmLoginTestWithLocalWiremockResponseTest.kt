@@ -45,12 +45,12 @@ internal class CrmLoginTestWithLocalWiremockResponseTest : BaseTest() {
     val response: CrmResponseStub = CrmController(wiremockBaseUrl).postCrmLogin(config.crm.crmUser)
     response.apply {
       assertAll(
-        { assertEquals(expectedLocalizedRole, this.localizedRole, "Received localized role isn't equal to the " +
-            "expected one") },
-        { assertEquals(expectedUserName, this.userName, "Received user name isn't equal " +
-            "to the expected one") },
-        { assertEquals(expectedRoleId, this.roleId,"Received role id isn't equal " +
-            "to the expected one") },
+        { assertEquals(expectedLocalizedRole, this.localizedRole,
+          "Received localized role isn't equal to the expected one") },
+        { assertEquals(expectedUserName, this.userName,
+          "Received user name isn't equalto the expected one") },
+        { assertEquals(expectedRoleId, this.roleId,
+          "Received role id isn't equal to the expected one") },
       )
     }
   }

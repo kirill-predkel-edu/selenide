@@ -1,14 +1,14 @@
 package config.context
 
 interface ContextHolder<T> {
-  val myContext: ThreadLocal<T>
+  val dynamicContext: ThreadLocal<T>
 
   fun setContext(context: T) {
-    if (myContext.get() == null) myContext.set(context)
+    if (dynamicContext.get() == null) dynamicContext.set(context)
   }
-  fun getContext(): T = myContext.get() ?: throw IllegalStateException("Context isn't initialized")
+  fun getContext(): T = dynamicContext.get() ?: throw IllegalStateException("Context isn't initialized")
 
-  fun clearContext() = myContext.remove()
+  fun clearContext() = dynamicContext.remove()
 
   fun initContext(context: T) {
     clearContext()

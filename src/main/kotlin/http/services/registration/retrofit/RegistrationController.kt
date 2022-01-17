@@ -10,8 +10,7 @@ class RegistrationController(
 ) {
 
   fun getRegistrationResponse(): RetrofitResponse {
-    val response = RetrofitResponse(service.getRegistrationStep().execute())
-    sessionContext().serviceResponse = response
-    return response
+    val response = service.getRegistrationStep().execute()
+    return RetrofitResponse(response).also { sessionContext().serviceResponse = it }
   }
 }

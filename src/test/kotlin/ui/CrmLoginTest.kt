@@ -1,10 +1,10 @@
 package ui
 
-import BaseTest
+import WebDriverBaseTest
 import org.junit.jupiter.api.Test
 import services.CrmLoginPageOperations
 
-internal class CrmLoginTest : BaseTest() {
+internal class CrmLoginTest : WebDriverBaseTest() {
 
   @Test
   fun `login in CRM with valid credentials`() {

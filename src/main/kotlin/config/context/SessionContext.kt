@@ -5,7 +5,7 @@ import config.context.listener.EventTypes
 import http.response.RetrofitResponse
 
 internal class SessionContext {
-  var events: EventManager = EventManager(EventTypes.NEW_RESPONSE)
+  var events: EventManager = EventManager()
   var authUser: String = ""
 
   var serviceResponse: RetrofitResponse? = null
