@@ -1,16 +1,10 @@
 package config.context.listener
 
 class EventManager {
-  private var listeners: MutableMap<EventTypes, MutableList<EventListener>> = mutableMapOf()
-
+  private var listeners: MutableMap<EventTypes, MutableSet<EventListener>> = mutableMapOf()
 
   fun subscribe(eventType: EventTypes, vararg listener: EventListener) {
-    if (listeners[eventType] == null) {
-      listeners[eventType] = mutableListOf(*listener)
-    }
-    else {
-      listeners[eventType]?.addAll(listener) 
-    }
+    listeners[eventType]?.addAll(listener) ?: this.listeners.put(eventType, mutableSetOf(*listener))
   }
 
   fun unsubscribe(eventType: EventTypes, listener: EventListener) {
