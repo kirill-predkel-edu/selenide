@@ -1,6 +1,6 @@
 package wiremock
 
-import BaseTest
+import ApiBaseTest
 import config.context.stubContext
 import http.services.crm.retrofit.CrmController
 import http.services.crm.retrofit.model.CrmResponseStub
@@ -13,7 +13,7 @@ import wiremock.mockconfig.CrmLoginMockConfig
 import wiremock.mockcontrol.CustomWiremockService
 import wiremock.server.WiremockStandaloneServer
 
-internal class CrmLoginWithStandaloneWiremockResponseTest : BaseTest() {
+internal class CrmLoginWithStandaloneWiremockResponseTest : ApiBaseTest() {
   private val wiremockStandaloneServer: WiremockStandaloneServer = WiremockStandaloneServer()
   private val wiremockService: CustomWiremockService = CustomWiremockService(wiremockStandaloneServer)
   private lateinit var wiremockBaseUrl: String

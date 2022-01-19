@@ -1,13 +1,13 @@
 package api
 
-import BaseTest
+import ApiBaseTest
 import config.holder.ApplicationConfigurationHolder
 import config.properties.TafSystemProperties
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-internal class ApplicationPropertiesTest : BaseTest() {
+internal class ApplicationPropertiesTest : ApiBaseTest() {
   private val expectedHost: String = "https://es-delta.moneyman.ru"
 
   @BeforeEach

@@ -1,15 +1,13 @@
 plugins {
-    kotlin("jvm") version "1.5.10"
+  kotlin("jvm") version "1.6.10"
+  id("io.qameta.allure") version "2.9.6"
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
-
-
 apply(plugin = "org.jetbrains.kotlin.jvm")
+apply(plugin = "io.qameta.allure")
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 val jacksonVersion: String by project
@@ -20,24 +18,34 @@ val webDriverManagerVersion: String by project
 val retrofitVersion: String by project
 val wiremockVersion: String by project
 val kotlinReflectVersion: String by project
+val allureVersion: String by project
+val slf4jVersion: String by project
+val kotlinLoggingVersion: String by project
 
 dependencies {
-    implementation(kotlin("stdlib"))
-    implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-    implementation("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-    implementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
-    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
-    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
-    implementation("com.codeborne:selenide:$selenideVersion")
-    implementation ("com.github.tomakehurst:wiremock-jre8:$wiremockVersion")
-    testImplementation ("org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion")
-    testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
+  implementation(kotlin("stdlib"))
+  implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+  implementation("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+  implementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
+  implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+  implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+  implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+  implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+  implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+  implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
+  implementation("com.codeborne:selenide:$selenideVersion")
+  implementation("com.github.tomakehurst:wiremock-jre8:$wiremockVersion")
+  implementation ("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
+  implementation ("org.slf4j:slf4j-simple:$slf4jVersion")
+  testImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion")
+  testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
+}
+
+allure {
+  adapter.autoconfigure
+  adapter.aspectjWeaver
 }
 
 tasks.test {
-    useJUnitPlatform()
+  useJUnitPlatform()
 }

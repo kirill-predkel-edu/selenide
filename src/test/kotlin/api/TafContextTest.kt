@@ -1,6 +1,6 @@
 package api
 
-import BaseTest
+import ApiBaseTest
 import config.context.getAuthUser
 import http.response.RetrofitResponse
 import http.services.registration.retrofit.RegistrationController
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-internal class TafContextTest : BaseTest() {
+internal class TafContextTest : ApiBaseTest() {
   private val authUserHeaderName: String = "AuthUser"
   private lateinit var actualAuthUser: String
   private lateinit var expectedAuthUser: String
