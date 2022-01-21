@@ -18,8 +18,7 @@ val webDriverManagerVersion: String by project
 val retrofitVersion: String by project
 val wiremockVersion: String by project
 val kotlinReflectVersion: String by project
-val allureVersion: String by project
-val slf4jVersion: String by project
+val logbackVersion: String by project
 val kotlinLoggingVersion: String by project
 
 dependencies {
@@ -36,7 +35,7 @@ dependencies {
   implementation("com.codeborne:selenide:$selenideVersion")
   implementation("com.github.tomakehurst:wiremock-jre8:$wiremockVersion")
   implementation ("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
-  implementation ("org.slf4j:slf4j-simple:$slf4jVersion")
+  implementation("ch.qos.logback:logback-classic:1.2.6")
   testImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion")
   testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
 }

@@ -1,6 +1,6 @@
 package wiremock
 
-import ApiBaseTest
+import basetests.ApiBaseTest
 import config.context.stubContext
 import http.services.crm.retrofit.CrmController
 import http.services.crm.retrofit.model.CrmResponseStub
