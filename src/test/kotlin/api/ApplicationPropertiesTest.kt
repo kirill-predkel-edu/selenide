@@ -1,6 +1,6 @@
 package api
 
-import BaseTest
+import basetests.BaseTest
 import config.holder.ApplicationConfigurationHolder
 import config.properties.TafSystemProperties
 import org.junit.jupiter.api.AfterEach

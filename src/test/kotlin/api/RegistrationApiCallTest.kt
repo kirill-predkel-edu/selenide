@@ -1,6 +1,6 @@
 package api
 
-import BaseTest
+import basetests.ApiBaseTest
 import http.response.CustomHttpClientResponse
 import http.response.RetrofitResponse
 import http.services.registration.okhttp.RegistrationService
@@ -8,7 +8,7 @@ import http.services.registration.retrofit.RegistrationController
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-internal class RegistrationApiCallTest : BaseTest() {
+internal class RegistrationApiCallTest : ApiBaseTest() {
   private val expectedCookie: String = "AuthUser"
 
   @Test
