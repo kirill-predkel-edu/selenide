@@ -35,7 +35,7 @@ dependencies {
   implementation("com.codeborne:selenide:$selenideVersion")
   implementation("com.github.tomakehurst:wiremock-jre8:$wiremockVersion")
   implementation ("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
-  implementation("ch.qos.logback:logback-classic:1.2.6")
+  implementation("ch.qos.logback:logback-classic:$logbackVersion")
   testImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion")
   testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
 }
