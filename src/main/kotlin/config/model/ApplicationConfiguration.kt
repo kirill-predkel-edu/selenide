@@ -5,7 +5,8 @@ internal data class ApplicationConfiguration(
   val wiremockConfiguration: WiremockConfiguration,
   val basicAuth: BasicAuth,
   val crm: CrmConfiguration,
-  val registration: RegistrationConfiguration
+  val registration: RegistrationConfiguration,
+  val sqlConfiguration: SqlConfiguration
 )
 
 internal data class CrmConfiguration(
@@ -37,3 +38,9 @@ internal data class WiremockConfiguration(
     return "$wiremockProtocol$wiremockHost:$wiremockPort"
   }
 }
+
+internal data class SqlConfiguration(
+  val url: String,
+  val user: String,
+  val password: String
+)
