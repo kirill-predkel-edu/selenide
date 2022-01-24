@@ -21,7 +21,7 @@ internal class MysqlClientTest {
   fun setupMySqlClient() {
     mySqlClient = CustomSqlClient()
   }
-  
+
   @AfterAll
   fun closeMysqlConnection() {
     mySqlClient.closeSession()

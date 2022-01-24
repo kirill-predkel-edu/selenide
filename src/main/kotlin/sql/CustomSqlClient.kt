@@ -21,7 +21,7 @@ internal class CustomSqlClient : SqlClient {
   override fun selectFirstRow(
     statement: String,
     inputParams: Map<String, Any?>
-  ): Map<String, Any?> {
+    ): Map<String, Any?> {
     val query = sqlQuery(statement, inputParams)
     return connectToDB().query(query, singleRowToMap)
   }
@@ -29,7 +29,7 @@ internal class CustomSqlClient : SqlClient {
   override fun selectAllRows(
     statement: String,
     inputParams: Map<String, Any?>
-  ): List<Map<String, Any?>> {
+    ): List<Map<String, Any?>> {
     val query = sqlQuery(statement, inputParams)
     return connectToDB().query(query, multipleRowsToList)
   }
