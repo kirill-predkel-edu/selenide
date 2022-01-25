@@ -13,7 +13,7 @@ internal class CustomSqlClient : SqlClient {
 
   override fun getSession(): Session {
     if (session == null) {
-      session = session(sqlConfig.url, sqlConfig.user, sqlConfig.password)
+      session = session(sqlConfig.dbUrl, sqlConfig.user, sqlConfig.password)
     }
     return session as Session
   }

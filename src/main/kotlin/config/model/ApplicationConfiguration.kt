@@ -40,7 +40,7 @@ internal data class WiremockConfiguration(
 }
 
 internal data class SqlConfiguration(
-  val url: String,
+  val dbUrl: String,
   val user: String,
   val password: String
 )

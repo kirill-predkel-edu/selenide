@@ -25,6 +25,6 @@ wiremockConfiguration:
 
 #SqlConfiguration
 sqlConfiguration:
-  url: "test"
+  dbUrl: "test"
   user: "test"
   password: "test"
