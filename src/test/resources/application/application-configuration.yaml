@@ -25,6 +25,6 @@ wiremockConfiguration:
 
 #SqlConfiguration
 sqlConfiguration:
-  url: "test"
-  user: "test"
-  password: "test"
+  url: "jdbc:mysql://db.bravo.mmes:3306/es_terraform_moneyman"
+  user: "root"
+  password: "root"

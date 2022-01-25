@@ -36,7 +36,7 @@ internal class CustomSqlClient : SqlClient {
 
   override fun closeSession() {
     if (session != null) {
-      connectToDB().close()
+      session!!.close()
       session = null
     }
   }

@@ -29,8 +29,7 @@ internal class MysqlClientTest {
   fun `Query result can contain single row`() {
     val userAccountData: Map<String, Any?> =
       mySqlClient.selectFirstRow(userAccountByIdSelectQuery, userAccountIdParam)
-    val userAccountDataSize = userAccountData.size
-    assertTrue(userAccountDataSize == 1, "There different from 1 row in query result")
+    assertTrue(userAccountData["id"] != null, "Row isn't stored in map")
   }
 
   @Test
