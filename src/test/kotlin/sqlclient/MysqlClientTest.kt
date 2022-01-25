@@ -1,7 +1,6 @@
 package sqlclient
 
 import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -14,8 +13,7 @@ import sql.UserAccountsQueries.userAccountByIdSelectQuery
 internal class MysqlClientTest {
   private lateinit var mySqlClient: CustomSqlClient
   private val userAccountIdParam = mapOf("id" to 38276)
-  private val expectedUserAccountId: Long? = userAccountIdParam["id"]?.toLong()
-  private val userAccountDeletedUsersParam = mapOf("deleted" to "false")
+  private val userAccountDeletedUsersParam = mapOf("deleted" to true)
 
   @BeforeAll
   fun setupMySqlClient() {
@@ -28,11 +26,11 @@ internal class MysqlClientTest {
   }
 
   @Test
-  fun `User account ID from the query equals to ID from query result`() {
+  fun `Query result can contain single row`() {
     val userAccountData: Map<String, Any?> =
       mySqlClient.selectFirstRow(userAccountByIdSelectQuery, userAccountIdParam)
-    val actualUserAccountId: Any? = userAccountData["id"]
-    assertEquals(expectedUserAccountId, actualUserAccountId, "ID's aren't equal")
+    val userAccountDataSize = userAccountData.size
+    assertTrue(userAccountDataSize == 1, "There different from 1 row in query result")
   }
 
   @Test

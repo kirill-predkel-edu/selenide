@@ -21,6 +21,7 @@ val kotlinReflectVersion: String by project
 val logbackVersion: String by project
 val kotlinLoggingVersion: String by project
 val kotlinJdbcVersion: String by project
+val mySqlConnectorVersion: String by project
 
 dependencies {
   implementation(kotlin("stdlib"))
@@ -37,7 +38,7 @@ dependencies {
   implementation("com.github.tomakehurst:wiremock-jre8:$wiremockVersion")
   implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
   implementation("ch.qos.logback:logback-classic:$logbackVersion")
-  implementation("mysql:mysql-connector-java:8.0.15")
+  implementation("mysql:mysql-connector-java:$mySqlConnectorVersion")
   implementation("com.vladsch.kotlin-jdbc:kotlin-jdbc:$kotlinJdbcVersion")
   testImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion")
   testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
