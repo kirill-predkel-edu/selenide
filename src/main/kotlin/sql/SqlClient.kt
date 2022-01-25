@@ -3,7 +3,7 @@ package sql
 import com.vladsch.kotlin.jdbc.Session
 
 interface SqlClient {
-  fun connectToDB(): Session
+  fun getSession(): Session
 
   fun selectFirstRow(
     statement: String,

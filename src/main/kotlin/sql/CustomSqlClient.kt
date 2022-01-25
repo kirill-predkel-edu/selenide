@@ -11,7 +11,7 @@ internal class CustomSqlClient : SqlClient {
   private val sqlConfig = ApplicationConfigurationHolder.getApplicationConfiguration()!!.sqlConfiguration
   private var session: Session? = null
 
-  override fun connectToDB(): Session {
+  override fun getSession(): Session {
     if (session == null) {
       session = session(sqlConfig.url, sqlConfig.user, sqlConfig.password)
     }
@@ -23,7 +23,7 @@ internal class CustomSqlClient : SqlClient {
     inputParams: Map<String, Any?>
     ): Map<String, Any?> {
     val query = sqlQuery(statement, inputParams)
-    return connectToDB().query(query, singleRowToMap)
+    return getSession().query(query, singleRowToMap)
   }
 
   override fun selectAllRows(
@@ -31,12 +31,12 @@ internal class CustomSqlClient : SqlClient {
     inputParams: Map<String, Any?>
     ): List<Map<String, Any?>> {
     val query = sqlQuery(statement, inputParams)
-    return connectToDB().query(query, multipleRowsToList)
+    return getSession().query(query, multipleRowsToList)
   }
 
   override fun closeSession() {
     if (session != null) {
-      session!!.close()
+      getSession().close()
       session = null
     }
   }
