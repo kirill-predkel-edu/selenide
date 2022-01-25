@@ -22,3 +22,9 @@ wiremockConfiguration:
   wiremockPort: 8081
   wiremockHost: "localhost"
   wiremockProtocol: "http://"
+
+#SqlConfiguration
+sqlConfiguration:
+  dbUrl: "test"
+  user: "test"
+  password: "test"
