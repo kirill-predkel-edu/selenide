@@ -14,20 +14,19 @@ pipeline {
             steps {
                 echo 'Testing..'
                 script {
-                    bat 'gradle test --tests TestListenersTest'
+                    try {
+                        bat 'gradle test --tests TestListenersTest'
+                    }
+                    finally {
+                        allure includeProperties: false, jdk: '', report: 'build/allure-results', results: [[path: 'build/allure-results']]
+
+                    }
                 }
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-            }
-        }
-
-        stage('Reporting') {
-            steps {
-                echo 'Report....'
-                allure includeProperties: false, jdk: '', report: 'build/allure-results', results: [[path: 'build/allure-results']]
             }
         }
     }
