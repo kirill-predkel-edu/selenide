@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     try {
-                       sh './gradlew clean build -x test'
+                       bat './gradlew clean build -x test'
                     }
                     finally {
                         echo 'Building'
