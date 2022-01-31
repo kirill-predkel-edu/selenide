@@ -3,8 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                echo 'Build started..'
+            script {
                 sh './gradlew clean build -x test'
             }
         }
