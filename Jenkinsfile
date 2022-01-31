@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 script {
-                       bat './gradlew clean build -x test'
+                       bat 'gradle clean build -x test'
                 }
             }
         }
@@ -21,6 +21,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+            }
+        }
+
+        stage('Reporting') {
+            steps {
+                echo 'Report....'
+                allure includeProperties: false, jdk: '', report: 'build/allure-results', results: [[path: 'build/allure-results']]
             }
         }
     }
