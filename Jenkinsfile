@@ -1,10 +1,12 @@
 pipeline {
     agent any
 
-    steps {
+    stages {
         stage('Build') {
-            script {
-                sh './gradlew clean build -x test'
+            steps {
+                script {
+                    './gradlew clean build -x test'
+                }
             }
         }
         stage('Test') {
