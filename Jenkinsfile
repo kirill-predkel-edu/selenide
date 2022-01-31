@@ -1,30 +1,25 @@
 pipeline {
-    agent any
+  agent any
 
-stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                script {
-                        bat 'gradle test --tests TestListenersTest.Library'
-                }
-            }
-        }
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Building..'
+      }
     }
+    stage('Test') {
+      steps {
+        echo 'Testing..'
+        script {
+          bat 'gradle test --tests TestListenersTest.Library'
+        }
+      }
+    }
+  }
   post('Publish Report') {
     always {
       script {
-        allure([
-            includeProperties: false,
-            properties: [],
-            reportBuildPolicy: 'ALWAYS',
-            results: [[path: '**/allure_results']]
-        ])
+        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
       }
     }
   }
