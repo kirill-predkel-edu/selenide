@@ -3,6 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
+            echo 'Building..'
             steps {
                 script {
                        bat './gradlew clean build -x test'
@@ -12,6 +13,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                script {
+                    bat 'gradle test --tests TestListenersTest'
+                }
             }
         }
         stage('Deploy') {
