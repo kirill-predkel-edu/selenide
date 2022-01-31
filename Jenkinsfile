@@ -5,9 +5,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                script {
-                       bat 'gradle clean build -x test'
-                }
             }
         }
         stage('Test') {
@@ -15,7 +12,7 @@ pipeline {
                 echo 'Testing..'
                 script {
                     try {
-                        bat 'gradle test --tests TestListenersTest'
+                        bat 'gradle test --tests TestListenersTest.Library'
                     }
                     finally {
                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
