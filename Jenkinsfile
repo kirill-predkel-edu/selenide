@@ -11,7 +11,7 @@ pipeline {
       steps {
         echo 'Testing..'
         script {
-          bat 'gradle test --tests TestListenersTest.Library'
+          bat 'gradle test --tests TestListenersTest'
         }
       }
     }
