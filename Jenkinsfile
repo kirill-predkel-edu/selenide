@@ -5,6 +5,9 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
+        script {
+          bat 'gradle clean build -x test'
+        }
       }
     }
     stage('Test') {
@@ -17,6 +20,7 @@ pipeline {
     }
   }
   post('Publish Report') {
+    echo 'Report is publishing..'
     always {
       script {
         allure includeProperties: false, jdk: '', results: [[path: '**/allure-results']]
