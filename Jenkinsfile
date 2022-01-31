@@ -11,15 +11,21 @@ stages {
             steps {
                 echo 'Testing..'
                 script {
-                    try {
                         bat 'gradle test --tests TestListenersTest.Library'
-                    }
-                    finally {
-                        allure includeProperties: false, jdk: '', results: [[path: '**/allure-results']]
-                    }
                 }
             }
         }
     }
-
+  post('Publish Report') {
+    always {
+      script {
+        allure([
+            includeProperties: false,
+            properties: [],
+            reportBuildPolicy: 'ALWAYS',
+            results: [[path: '**/allure_results']]
+        ])
+      }
+    }
+  }
 }
