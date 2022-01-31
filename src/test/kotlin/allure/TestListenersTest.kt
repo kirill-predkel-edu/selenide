@@ -17,7 +17,7 @@ internal class TestListenersTest : BaseTest() {
   }
 
   @Test
-  fun `LogFile is attached to Allure report on pass`() {
+  fun Library() {
     print("sheesh")
   }
 
