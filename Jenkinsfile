@@ -20,8 +20,8 @@ pipeline {
     }
   }
   post('Publish Report') {
-    echo 'Report is publishing..'
     always {
+      echo 'Report is publishing..'
       script {
         allure includeProperties: false, jdk: '', results: [[path: '**/allure-results']]
       }
