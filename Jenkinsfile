@@ -18,9 +18,7 @@ pipeline {
                         bat 'gradle test --tests TestListenersTest'
                     }
                     finally {
-                        allure includeProperties: false, jdk: '', report: 'allure-results', results: [[path:
-                                                                                                           'allure-results']]
-
+                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
                     }
                 }
             }
