@@ -23,7 +23,7 @@ pipeline {
     always {
       echo 'Report is publishing..'
       script {
-        allure includeProperties: false, jdk: '', results: [[path: '**/allure-results']]
+        allure includeProperties: false, jdk: '', results: [[path: '**/build/allure-results']]
       }
     }
   }
