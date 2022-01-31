@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    stages {
+stages {
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -15,15 +15,11 @@ pipeline {
                         bat 'gradle test --tests TestListenersTest.Library'
                     }
                     finally {
-                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                        allure includeProperties: false, jdk: '', results: [[path: '**/allure-results']]
                     }
                 }
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
     }
+
 }
