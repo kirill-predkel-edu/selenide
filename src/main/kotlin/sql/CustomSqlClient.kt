@@ -23,6 +23,7 @@ internal class CustomSqlClient : SqlClient {
     inputParams: Map<String, Any?>
     ): Map<String, Any?> {
     val query = sqlQuery(statement, inputParams)
+    println("test")
     return getSession().query(query, singleRowToMap)
   }
 
