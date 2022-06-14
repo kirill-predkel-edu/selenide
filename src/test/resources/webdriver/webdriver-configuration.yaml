@@ -1,6 +1,6 @@
 timeout: 10000
 browserScreenSize: 1280x720
 browserType: CHROME
-webDriverType: LOCAL
+webDriverType: REMOTE
 remoteDriverHost: localhost
 remoteDriverPort: 4444

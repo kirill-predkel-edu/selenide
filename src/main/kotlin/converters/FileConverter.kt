@@ -2,6 +2,7 @@ package converters
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.module.kotlin.KotlinFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
@@ -19,7 +20,16 @@ object FileConverter {
 
   inline fun <reified T : Any> yamlToObject(filePath: String): T {
     return Files.newBufferedReader(FileSystems.getDefault().getPath(filePath)).use {
-      ObjectMapper(YAMLFactory()).registerModule(KotlinModule()).readValue(it)
+      ObjectMapper(YAMLFactory()).registerModule(
+        KotlinModule.Builder()
+          .withReflectionCacheSize(512)
+          .configure(KotlinFeature.NullToEmptyCollection, false)
+          .configure(KotlinFeature.NullToEmptyMap, false)
+          .configure(KotlinFeature.NullIsSameAsDefault, false)
+          .configure(KotlinFeature.SingletonSupport, false)
+          .configure(KotlinFeature.StrictNullChecks, false)
+          .build()
+      ).readValue(it)
     }
   }
 

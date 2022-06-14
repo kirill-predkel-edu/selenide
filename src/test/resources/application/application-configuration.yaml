@@ -1,17 +1,17 @@
-host: "https://es-bravo.moneyman.ru"
+host: "https://es-golf.moneyman.ru"
 
 #Basic auth
 basicAuth:
-  login: "test"
-  password: "test"
+  login: "moneyman"
+  password: "1005"
 
 #CRM
 crm:
   loginEndpoint: "/secure/new-admin/index.html#/login"
   crmUser:
-    login: "test"
-    password: "test"
-    captcha: "test"
+    login: "admmin"
+    password: "nimda2012"
+    captcha: "11111"
 
 #Registration
 registration:

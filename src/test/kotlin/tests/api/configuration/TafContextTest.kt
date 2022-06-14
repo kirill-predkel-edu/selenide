@@ -1,6 +1,6 @@
-package api
+package tests.api.configuration
 
-import basetests.ApiBaseTest
+import tests.basetests.ApiBaseTest
 import config.context.getAuthUser
 import http.response.RetrofitResponse
 import http.services.registration.retrofit.RegistrationController

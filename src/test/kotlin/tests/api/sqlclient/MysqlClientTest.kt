@@ -1,4 +1,4 @@
-package sqlclient
+package tests.api.sqlclient
 
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertTrue

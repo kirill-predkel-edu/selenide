@@ -1,6 +1,6 @@
-package api
+package tests.api.configuration
 
-import basetests.ApiBaseTest
+import tests.basetests.ApiBaseTest
 import http.response.CustomHttpClientResponse
 import http.response.RetrofitResponse
 import http.services.registration.okhttp.RegistrationService

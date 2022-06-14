@@ -1,4 +1,4 @@
-package basetests
+package tests.basetests
 
 import config.holder.ApplicationConfigurationHolder
 import config.model.ApplicationConfiguration

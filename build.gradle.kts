@@ -40,6 +40,7 @@ dependencies {
   implementation("ch.qos.logback:logback-classic:$logbackVersion")
   implementation("mysql:mysql-connector-java:$mySqlConnectorVersion")
   implementation("com.vladsch.kotlin-jdbc:kotlin-jdbc:$kotlinJdbcVersion")
+  implementation("org.junit.jupiter:junit-jupiter:5.8.1")
   testImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion")
   testImplementation("io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion")
 }

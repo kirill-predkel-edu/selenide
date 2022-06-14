@@ -1,7 +1,7 @@
-package allure
+package tests.ui.allure
 
 import annotations.DoNotExecute
-import basetests.BaseTest
+import tests.basetests.BaseTest
 import org.junit.jupiter.api.Test
 import services.CrmLoginPageOperations
 
@@ -14,11 +14,6 @@ internal class TestListenersTest : BaseTest() {
       openPage(config.host)
       inputEmail(config.crm.crmUser.login)
     }
-  }
-
-  @Test
-  fun `LogFile is attached to Allure report on pass`() {
-    print("sheesh")
   }
 
   @Test

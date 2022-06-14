@@ -1,6 +1,6 @@
-package ui
+package tests.ui.crm
 
-import basetests.UiBaseTest
+import tests.basetests.UiBaseTest
 import org.junit.jupiter.api.Test
 import services.CrmLoginPageOperations
 

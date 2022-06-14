@@ -9,5 +9,7 @@ import http.services.crm.retrofit.model.CrmResponseStub
 
 internal interface CrmService : RetrofitService {
   @POST("/secure/rest/sign/in")
-  fun loginToCrm(@Body body: CrmUserConfiguration): Call<CrmResponseStub>
+  fun loginToCrm(
+    @Body body: CrmUserConfiguration
+  ) : Call<CrmResponseStub>
 }
